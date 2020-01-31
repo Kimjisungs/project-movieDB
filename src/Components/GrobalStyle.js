@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body{
     font-family: Georgia, "Times New Roman", serif;
+    background-color: #081c24;
     font-size: 16px;
     color: #222;
   }

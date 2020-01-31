@@ -12,9 +12,8 @@ const GlobalStyle = createGlobalStyle`
   }
   body{
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 12px;
-    color: white;
-    height: 100vh;
+    font-size: 16px;
+    color: #222;
   }
 `;
 

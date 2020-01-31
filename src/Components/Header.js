@@ -4,7 +4,10 @@ import styled from "styled-components";
 import Search from "Components/Search";
 
 const Header = styled.header`
-  padding: 10px;
+  position: relative;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 `;
 
 const Logo = styled.h1`
@@ -12,6 +15,17 @@ const Logo = styled.h1`
   a {
     display: block;
   }
+`;
+
+const SearchWrap = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  width: 100%;
 `;
 
 export default () => (

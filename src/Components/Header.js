@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Search from "Components/Search";
 
 const Header = styled.header`
   padding: 10px;
@@ -20,5 +21,8 @@ export default () => (
         <img src="https://www.themoviedb.org/assets/2/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg" />
       </Link>
     </Logo>
+    <SearchWrap>
+      <Search />
+    </SearchWrap>
   </Header>
 );

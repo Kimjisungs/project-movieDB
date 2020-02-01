@@ -1,5 +1,7 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+
+import Tab from "Components/tab";
+import Router from "./Router";
 
 const HomePresenter = props => {
   return (

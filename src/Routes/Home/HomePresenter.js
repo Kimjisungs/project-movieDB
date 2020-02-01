@@ -1,7 +1,12 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
-const HomePresenter = () => {
-  return <div>HomePresenter</div>;
+const HomePresenter = props => {
+  return (
+    <>
+      <div>visual</div>
+    </>
+  );
 };
 
-export default HomePresenter;
+export default withRouter(HomePresenter);

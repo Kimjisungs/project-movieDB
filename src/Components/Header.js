@@ -5,12 +5,14 @@ import Search from "Components/Search";
 
 const Header = styled.header`
   position: relative;
-  width: 1200px;
+  width: 1100px;
   margin: 0 auto;
   padding: 20px;
 `;
 
 const Logo = styled.h1`
+  z-index: 10;
+  position: relative;
   width: 100px;
   a {
     display: block;

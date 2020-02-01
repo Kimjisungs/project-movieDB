@@ -18,4 +18,4 @@ const HomePresenter = props => {
   );
 };
 
-export default withRouter(HomePresenter);
+export default HomePresenter;

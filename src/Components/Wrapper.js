@@ -8,7 +8,7 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  width: 1280px;
+  width: 1100px;
 `;
 
 export default ({ children }) => {

@@ -1,9 +1,9 @@
 import React from "react";
 import "../../assets/css/swiper.css";
 import Swiper from "react-id-swiper";
-import styled from "styled-components";
-import Tab from "../../Components/tab";
 import Router from "./Router";
+import Tab from "../../Components/tab";
+import Visual from "../../Components/visual";
 
 const HomePresenter = props => {
   return (

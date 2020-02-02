@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Search from "Components/Search";
+import Search from "./Search";
 
 const Header = styled.header`
   position: relative;

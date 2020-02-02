@@ -5,10 +5,10 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import Header from "Components/Header";
-import Wrapper from "Components/Wrapper";
+import Header from "./Header";
+import Wrapper from "./Wrapper";
 
-import Home from "Routes/Home";
+import Home from "../Routes/Home";
 
 export default () => (
   <Router>

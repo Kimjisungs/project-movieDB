@@ -7,7 +7,7 @@ const Header = styled.header`
   position: relative;
   width: 1100px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px 0;
 `;
 
 const Logo = styled.h1`

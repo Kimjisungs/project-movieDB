@@ -5,10 +5,26 @@ import Router from "./Router";
 import Tab from "../../Components/tab";
 import Visual from "../../Components/visual";
 
-const HomePresenter = props => {
+const HomePresenter = ({ loading, error, popularLists }) => {
   return (
     <>
-      <div>visual</div>
+      {loading ? (
+        <div>로딩</div>
+      ) : (
+        <Swiper>
+          {popularLists &&
+            popularLists.length > 0 &&
+            popularLists.map(visual => (
+              <div key={visual.id}>
+                <Visual
+                  id={visual.id}
+                  title={visual.name}
+                  image={visual.backdrop_path}
+                />
+              </div>
+            ))}
+        </Swiper>
+      )}
       <Tab
         to={[
           { pathname: "/home", text: "무비" },

@@ -34,7 +34,9 @@ class HomeContainer extends React.Component {
       <HomePresenter
         loading={loading}
         error={error}
-        popularLists={popularLists}
+        popularLists={
+          popularLists && popularLists.filter((vidoe, index) => index < 5)
+        }
       />
     );
   }

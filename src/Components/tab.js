@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import uuidv4 from "uuid/v4";
 
 const List = styled.ul`
   display: flex;
@@ -21,7 +22,7 @@ export default props => {
   return (
     <List>
       {props.to.map(item => (
-        <Item>
+        <Item key={uuidv4()}>
           <Links to={item.pathname}>{item.text}</Links>
         </Item>
       ))}

@@ -29,10 +29,13 @@ class HomeContainer extends React.Component {
   }
 
   render() {
+    const { loading, error, popularLists } = this.state;
     return (
-      <>
-        <HomePresenter />
-      </>
+      <HomePresenter
+        loading={loading}
+        error={error}
+        popularLists={popularLists}
+      />
     );
   }
 }

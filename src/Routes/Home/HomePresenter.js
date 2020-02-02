@@ -44,8 +44,10 @@ const HomePresenter = ({ loading, error, popularLists }) => {
         <TabWrap>
           <Tab
             to={[
-              { pathname: "/home", text: "무비" },
-              { pathname: "/home/tv", text: "티비" }
+              { pathname: "/home", text: "Movie" },
+              { pathname: "/home/tv", text: "TV" },
+              { pathname: "/home/People", text: "People" },
+              { pathname: "/home/genres", text: "genres" }
             ]}
           />
         </TabWrap>

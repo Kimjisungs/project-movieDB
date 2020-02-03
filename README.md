@@ -23,4 +23,8 @@
    - 데이터가 불러오기 전 loading처리
 
 6. error
+
    - loading 후 error(페이지가 없을떄)의 경우 "Page Not Found 처리"
+
+7. visual
+   - 데이터 제한 5개 filter

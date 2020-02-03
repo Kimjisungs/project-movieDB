@@ -5,6 +5,7 @@ import Swiper from "react-id-swiper";
 import Router from "./Router";
 import Tab from "../../Components/Tab";
 import Visual from "../../Components/Visual";
+import Message from "../../Components/Message";
 
 const VisualWrap = styled.div``;
 
@@ -26,6 +27,15 @@ const TabWrap = styled.div`
   right: 0;
 `;
 
+const ErrorWrap = styled.div`
+  display: flex;
+  height: 400px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+`;
+
 const HomePresenter = ({ loading, error, popularLists }) => {
   return (
     <>
@@ -45,7 +55,13 @@ const HomePresenter = ({ loading, error, popularLists }) => {
                   />
                 </div>
               ))}
-          </Swiper>
+            </Swiper>
+          )}
+          {error && (
+            <ErrorWrap>
+              <Message text="이미지를 불러올 수 없습니다" />
+            </ErrorWrap>
+          )}
         </VisualWrap>
       )}
       <TabContainer>

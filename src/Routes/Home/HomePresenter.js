@@ -6,16 +6,24 @@ import Router from "./Router";
 import Tab from "../../Components/Tab";
 import Visual from "../../Components/Visual";
 
-const VisualContainer = styled.div`
+const VisualWrap = styled.div``;
+
+const TabContainer = styled.div`
+  position: relative;
   display: flex;
+  align-items: center;
 `;
 
-const VisualWrap = styled.div`
-  width: 80%;
+const TabTitle = styled.h2`
+  padding: 30px 20px 40px;
+  font-size: 1.75rem;
+  color: #01d277;
+  text-align: center;
 `;
 
 const TabWrap = styled.div`
-  width: 20%;
+  position: absolute;
+  right: 0;
 `;
 
 const HomePresenter = ({ loading, error, popularLists }) => {

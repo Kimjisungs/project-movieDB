@@ -6,6 +6,7 @@ import Router from "./Router";
 import Tab from "../../Components/Tab";
 import Visual from "../../Components/Visual";
 import Message from "../../Components/Message";
+import Loader from "../../Components/Loader";
 
 const VisualWrap = styled.div``;
 
@@ -36,11 +37,21 @@ const ErrorWrap = styled.div`
   color: #fff;
 `;
 
+const LoadingWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  background-color: #000;
+`;
+
 const HomePresenter = ({ loading, error, popularLists }) => {
   return (
     <>
       {loading ? (
-        <div>로딩</div>
+        <LoadingWrap>
+          <Loader />
+        </LoadingWrap>
       ) : (
         <VisualWrap>
           {popularLists && popularLists.length > 0 && (

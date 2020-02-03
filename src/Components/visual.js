@@ -16,8 +16,9 @@ const Title = styled.h3`
   position: absolute;
   top: 40px;
   left: 40px;
-  font-size: 2rem;
+  font-size: 4rem;
   color: #fff;
+  text-shadow: 2px 4px 9px rgba(0, 0, 0, 0.6);
 `;
 
 export default ({ key, id, title, image }) => (

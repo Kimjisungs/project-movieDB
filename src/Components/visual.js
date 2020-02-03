@@ -21,7 +21,7 @@ const Title = styled.h3`
 `;
 
 export default ({ key, id, title, image }) => (
-  <Link>
+  <Link to="/home/visual/:id">
     <Item
       bgUrl={
         image

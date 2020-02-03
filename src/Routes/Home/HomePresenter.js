@@ -43,10 +43,9 @@ const HomePresenter = ({ loading, error, popularLists }) => {
         <div>로딩</div>
       ) : (
         <VisualWrap>
-          <Swiper>
-            {popularLists &&
-              popularLists.length > 0 &&
-              popularLists.map(visual => (
+          {popularLists && popularLists.length > 0 && (
+            <Swiper>
+              {popularLists.map(visual => (
                 <div key={visual.id}>
                   <Visual
                     id={visual.id}

@@ -3,8 +3,8 @@ import styled from "styled-components";
 import "../../assets/css/swiper.css";
 import Swiper from "react-id-swiper";
 import Router from "./Router";
-import Tab from "../../Components/tab";
-import Visual from "../../Components/visual";
+import Tab from "../../Components/Tab";
+import Visual from "../../Components/Visual";
 
 const VisualContainer = styled.div`
   display: flex;

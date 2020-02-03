@@ -8,13 +8,15 @@ const List = styled.ul`
   border-left: 0;
 `;
 
-const Item = styled.li``;
+const Item = styled.li`
+  ${props =>
+    props.activeCheck ? props.activeStyle.visible : props.activeStyle.hidden};
+`;
 
 const Links = styled(Link)`
   display: block;
   padding: 40px 40px;
-  ${props =>
-    props.activeCheck ? props.activeStyle.visible : props.activeStyle.hidden};
+
   text-align: center;
   color: #dfdfdf;
 `;
@@ -29,16 +31,13 @@ export default withRouter(props => {
     <List>
       {to.map(item => {
         const { pathname: itemPathname, text } = item;
-
         return (
-          <Item key={uuidv4()}>
-            <Links
-              to={itemPathname}
-              activeCheck={pathname === itemPathname}
-              activeStyle={activeStyle}
-            >
-              {text}
-            </Links>
+          <Item
+            key={uuidv4()}
+            activeCheck={pathname === itemPathname}
+            activeStyle={activeStyle}
+          >
+            <Links to={itemPathname}>{text}</Links>
           </Item>
         );
       })}

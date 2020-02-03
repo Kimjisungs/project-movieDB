@@ -48,21 +48,22 @@ const HomePresenter = ({ loading, error, popularLists }) => {
           </Swiper>
         </VisualWrap>
       )}
-      <TabWrap>
+      <TabContainer>
         <TabTitle>Movie Lists</TabTitle>
-        <Tabs
-          to={[
-            { pathname: "/home", text: "Movie" },
-            { pathname: "/home/tv", text: "TV" },
-            { pathname: "/home/People", text: "People" },
-            { pathname: "/home/genres", text: "genres" }
-          ]}
-          activeStyle={{
-            visible: `background-color: rgba(0, 0, 0, 0.3)`,
-            hidden: `background-color: transparent`
-          }}
-        />
-      </TabWrap>
+        <TabWrap>
+          <Tab
+            to={[
+              { pathname: "/home", text: "Movie" },
+              { pathname: "/home/tv", text: "TV" },
+              { pathname: "/home/People", text: "People" }
+            ]}
+            activeStyle={{
+              visible: `background-color: rgba(0, 0, 0, 0.3)`,
+              hidden: `background-color: transparent`
+            }}
+          />
+        </TabWrap>
+      </TabContainer>
       <Router />
     </>
   );

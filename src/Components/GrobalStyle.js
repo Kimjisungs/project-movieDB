@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing:border-box;
   }
   body{
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: Arial, Georgia, "Times New Roman", serif;
     background-color: #081c24;
     font-size: 16px;
     color: #222;

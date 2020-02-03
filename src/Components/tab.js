@@ -7,14 +7,13 @@ const List = styled.ul`
   border-left: 0;
 `;
 
-const Item = styled.li`
-  ${props =>
-    props.activeCheck ? props.activeStyle.visible : props.activeStyle.hidden}
-`;
+const Item = styled.li``;
 
 const Links = styled(Link)`
   display: block;
-  padding: 30px 20px;
+  padding: 40px 40px;
+  ${props =>
+    props.activeCheck ? props.activeStyle.visible : props.activeStyle.hidden};
   text-align: center;
   color: #fff;
 `;
@@ -31,12 +30,14 @@ export default withRouter(props => {
         const { pathname: itemPathname, text } = item;
 
         return (
-          <Item
-            key={uuidv4()}
-            activeCheck={pathname === itemPathname}
-            activeStyle={activeStyle}
-          >
-            <Links to={itemPathname}>{text}</Links>
+          <Item key={uuidv4()}>
+            <Links
+              to={itemPathname}
+              activeCheck={pathname === itemPathname}
+              activeStyle={activeStyle}
+            >
+              {text}
+            </Links>
           </Item>
         );
       })}

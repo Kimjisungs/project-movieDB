@@ -4,18 +4,19 @@ import styled from "styled-components";
 import uuidv4 from "uuid/v4";
 
 const List = styled.ul`
-  display: flex;
+  border-left: 0;
 `;
 
 const Item = styled.li`
-  flex-basis: 30%;
+  ${props =>
+    props.active ? props.activeStyle.visible : props.activeStyle.hidden}
 `;
 
 const Links = styled(Link)`
   display: block;
-  padding: 20px;
-  background-color: #dfdfdf;
+  padding: 30px 20px;
   text-align: center;
+  color: #fff;
 `;
 
 export default props => {

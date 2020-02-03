@@ -9,7 +9,7 @@ const List = styled.ul`
 
 const Item = styled.li`
   ${props =>
-    props.active ? props.activeStyle.visible : props.activeStyle.hidden}
+    props.activeCheck ? props.activeStyle.visible : props.activeStyle.hidden}
 `;
 
 const Links = styled(Link)`
@@ -19,14 +19,27 @@ const Links = styled(Link)`
   color: #fff;
 `;
 
-export default props => {
+export default withRouter(props => {
+  const {
+    to,
+    activeStyle,
+    location: { pathname }
+  } = props;
   return (
     <List>
-      {props.to.map(item => (
-        <Item key={uuidv4()}>
-          <Links to={item.pathname}>{item.text}</Links>
-        </Item>
-      ))}
+      {to.map(item => {
+        const { pathname: itemPathname, text } = item;
+
+        return (
+          <Item
+            key={uuidv4()}
+            activeCheck={pathname === itemPathname}
+            activeStyle={activeStyle}
+          >
+            <Links to={itemPathname}>{text}</Links>
+          </Item>
+        );
+      })}
     </List>
   );
-};
+});

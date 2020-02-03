@@ -4,6 +4,7 @@ import styled from "styled-components";
 import uuidv4 from "uuid/v4";
 
 const List = styled.ul`
+  display: flex;
   border-left: 0;
 `;
 
@@ -15,7 +16,7 @@ const Links = styled(Link)`
   ${props =>
     props.activeCheck ? props.activeStyle.visible : props.activeStyle.hidden};
   text-align: center;
-  color: #fff;
+  color: #dfdfdf;
 `;
 
 export default withRouter(props => {

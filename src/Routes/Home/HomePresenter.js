@@ -7,6 +7,7 @@ import Tab from "../../Components/Tab";
 import Visual from "../../Components/Visual";
 import Message from "../../Components/Message";
 import Loader from "../../Components/Loader";
+import PropTypes from "prop-types";
 
 const VisualWrap = styled.div``;
 
@@ -111,6 +112,12 @@ const HomePresenter = ({ loading, error, popularLists }) => {
       <Router />
     </>
   );
+};
+
+HomePresenter.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+  popularLists: PropTypes.array
 };
 
 export default HomePresenter;

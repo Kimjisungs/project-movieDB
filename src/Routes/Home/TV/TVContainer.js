@@ -4,7 +4,7 @@ import { tvApi } from "../../../api";
 
 class TVContainer extends React.Component {
   state = {
-    loading: null,
+    loading: true,
     error: null,
     popResults: null,
     topResults: null,

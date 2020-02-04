@@ -4,7 +4,7 @@ import { movieApi } from "../../../api";
 
 class MovieContainer extends React.Component {
   state = {
-    loading: null,
+    loading: true,
     error: null,
     nowResults: null,
     popResults: null,

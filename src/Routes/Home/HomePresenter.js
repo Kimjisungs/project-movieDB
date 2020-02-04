@@ -102,8 +102,8 @@ const HomePresenter = ({ loading, error, popularLists }) => {
               { pathname: "/home/People", text: "People" }
             ]}
             activeStyle={{
-              visible: `background-color: rgba(0, 0, 0, 0.3)`,
-              hidden: `background-color: transparent`
+              visible: `background-color: rgba(0, 0, 0, 0.4);border-bottom:3px solid #01d277;`,
+              hidden: `background-color: transparent;border-bottom:3px solid transparent;`
             }}
           />
         </TabWrap>

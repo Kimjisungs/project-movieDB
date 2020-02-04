@@ -40,13 +40,21 @@ class MovieContainer extends React.Component {
 
   render() {
     const { loading, error, popResults, topResults, onAirResults } = this.state;
+    const limitLength = 5;
     return (
       <MoviePresenter
         loading={loading}
         error={error}
-        popResults={popResults}
-        topResults={topResults}
-        onAirResults={onAirResults}
+        popResults={
+          popResults && popResults.filter((empty, index) => index < limitLength)
+        }
+        topResults={
+          topResults && topResults.filter((empty, index) => index < limitLength)
+        }
+        onAirResults={
+          onAirResults &&
+          onAirResults.filter((empty, index) => index < limitLength)
+        }
       />
     );
   }

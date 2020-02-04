@@ -5,7 +5,7 @@ import Loader from "../../../Components/Loader";
 import Poster from "../../../Components/Poster";
 import Message from "../../../Components/Message";
 
-const TVPresenter = ({
+const MoviePresenter = ({
   loading,
   error,
   nowResults,
@@ -65,4 +65,4 @@ const TVPresenter = ({
   </WrapperContent>
 );
 
-export default TVPresenter;
+export default MoviePresenter;

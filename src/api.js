@@ -18,6 +18,17 @@ export const tvApi = {
   onTheAir: () => api.get("/tv/on_the_air", { params }),
   tvDetail: tv_id => api.get(`/tv/${tv_id}`, { params }),
   searchTv: query =>
+    api.get(`/search/tv`, {
+      params: { ...params, query }
+    })
+};
+
+export const movieApi = {
+  nowPlaying: () => api.get("/movie/now_playing", { params }),
+  popular: () => api.get("/movie/popular", { params }),
+  topRated: () => api.get("/movie/top_rated", { params }),
+  movieDetail: movie_id => api.get(`/tv/${movie_id}`, { params }),
+  searchMovie: query =>
     api.get(`/search/movie`, {
       params: { ...params, query }
     })

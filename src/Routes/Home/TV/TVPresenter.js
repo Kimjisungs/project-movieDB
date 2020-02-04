@@ -3,6 +3,7 @@ import WrapperContent from "../../../Components/WrapperContent";
 import Section from "../../../Components/Section";
 import Loader from "../../../Components/Loader";
 import Poster from "../../../Components/Poster";
+import Message from "../../../Components/Message";
 
 const TVPresenter = ({
   loading,
@@ -58,6 +59,7 @@ const TVPresenter = ({
             ))}
           </Section>
         )}
+        {error && <Message text={error} />}
       </>
     )}
   </WrapperContent>

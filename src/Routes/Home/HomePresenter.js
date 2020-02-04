@@ -97,8 +97,8 @@ const HomePresenter = ({ loading, error, popularLists }) => {
         <TabWrap>
           <Tab
             to={[
-              { pathname: "/home", text: "Movie" },
-              { pathname: "/home/tv", text: "TV" },
+              { pathname: "/home", text: "TV" },
+              { pathname: "/home/tv", text: "Movie" },
               { pathname: "/home/People", text: "People" }
             ]}
             activeStyle={{

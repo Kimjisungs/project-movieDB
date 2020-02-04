@@ -16,42 +16,42 @@ const TVPresenter = ({
     <>
       {popResults && popResults.length > 0 && (
         <Section title="Popular">
-          {popResults.map(movie => (
+          {popResults.map(tv => (
             <Poster
-              key={movie.id}
-              id={movie.id}
-              title={movie.name}
-              image={movie.poster_path}
-              date={movie.first_air_date}
-              overview={movie.overview}
+              key={tv.id}
+              id={tv.id}
+              title={tv.name}
+              image={tv.poster_path}
+              date={tv.first_air_date}
+              overview={tv.overview}
             />
           ))}
         </Section>
       )}
       {topResults && topResults.length > 0 && (
         <Section title="Tob Rated">
-          {topResults.map(movie => (
+          {topResults.map(tv => (
             <Poster
-              key={movie.id}
-              id={movie.id}
-              title={movie.name}
-              image={movie.poster_path}
-              date={movie.first_air_date}
-              overview={movie.overview}
+              key={tv.id}
+              id={tv.id}
+              title={tv.name}
+              image={tv.poster_path}
+              date={tv.first_air_date}
+              overview={tv.overview}
             />
           ))}
         </Section>
       )}
       {onAirResults && onAirResults.length > 0 && (
         <Section title="On The Air">
-          {onAirResults.map(movie => (
+          {onAirResults.map(tv => (
             <Poster
-              key={movie.id}
-              id={movie.id}
-              title={movie.name}
-              image={movie.poster_path}
-              date={movie.first_air_date}
-              overview={movie.overview}
+              key={tv.id}
+              id={tv.id}
+              title={tv.name}
+              image={tv.poster_path}
+              date={tv.first_air_date}
+              overview={tv.overview}
             />
           ))}
         </Section>

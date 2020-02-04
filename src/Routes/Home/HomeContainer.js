@@ -1,6 +1,6 @@
 import React from "react";
 import HomePresenter from "./HomePresenter";
-import { movieApi } from "../../api";
+import { tvApi } from "../../api";
 
 class HomeContainer extends React.Component {
   state = {
@@ -13,7 +13,7 @@ class HomeContainer extends React.Component {
     try {
       const {
         data: { results: popularLists }
-      } = await movieApi.popular();
+      } = await tvApi.popular();
       this.setState({
         popularLists
       });

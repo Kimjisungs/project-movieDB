@@ -12,11 +12,11 @@ const params = {
   language
 };
 
-export const movieApi = {
+export const tvApi = {
   popular: () => api.get("/tv/popular", { params }),
   topRated: () => api.get("/tv/top_rated", { params }),
   onTheAir: () => api.get("/tv/on_the_air", { params }),
-  movieDetail: tv_id => api.get(`/tv/${tv_id}`, { params }),
+  tvDetail: tv_id => api.get(`/tv/${tv_id}`, { params }),
   searchMovie: query =>
     api.get(`/search/movie`, {
       params: { ...params, query }

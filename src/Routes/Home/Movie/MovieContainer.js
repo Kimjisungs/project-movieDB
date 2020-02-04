@@ -1,6 +1,6 @@
 import React from "react";
 import MoviePresenter from "./MoviePresenter";
-import { movieApi } from "../../../api";
+import { tvApi } from "../../../api";
 
 class MovieContainer extends React.Component {
   state = {
@@ -15,13 +15,13 @@ class MovieContainer extends React.Component {
     try {
       const {
         data: { results: popResults }
-      } = await movieApi.popular();
+      } = await tvApi.popular();
       const {
         data: { results: topResults }
-      } = await movieApi.topRated();
+      } = await tvApi.topRated();
       const {
         data: { results: onAirResults }
-      } = await movieApi.onTheAir();
+      } = await tvApi.onTheAir();
       this.setState({
         popResults,
         topResults,

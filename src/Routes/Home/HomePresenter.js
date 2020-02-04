@@ -18,7 +18,8 @@ const TabContainer = styled.div`
 
 const TabTitle = styled.h2`
   padding: 30px 20px 40px;
-  font-size: 1.75rem;
+  font-size: 2.25rem;
+  font-weight: 700;
   color: #01d277;
   text-align: center;
 `;

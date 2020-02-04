@@ -33,3 +33,12 @@ export const movieApi = {
       params: { ...params, query }
     })
 };
+
+export const peopleApi = {
+  popular: () => api.get("/person/popular", { params }),
+  peopleDetail: people_id => api.get(`/person/${people_id}`, { params }),
+  peoplehMovie: query =>
+    api.get(`/search/person`, {
+      params: { ...params, query }
+    })
+};

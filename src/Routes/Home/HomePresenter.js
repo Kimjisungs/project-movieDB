@@ -47,6 +47,23 @@ const LoadingWrap = styled.div`
 `;
 
 const HomePresenter = ({ loading, error, popularLists }) => {
+  const params = {
+    slidesPerView: 1,
+    loop: true,
+    centeredSlides: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    }
+  };
   return (
     <>
       {loading ? (
@@ -56,7 +73,7 @@ const HomePresenter = ({ loading, error, popularLists }) => {
       ) : (
         <VisualWrap>
           {popularLists && popularLists.length > 0 && (
-            <Swiper>
+            <Swiper {...params}>
               {popularLists.map(visual => (
                 <div key={visual.id}>
                   <Visual

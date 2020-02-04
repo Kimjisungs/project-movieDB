@@ -29,7 +29,7 @@ class MovieContainer extends React.Component {
       });
     } catch {
       this.setState({
-        error: "Page Not Found"
+        error: "Poster Not Found"
       });
     } finally {
       this.setState({

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Search = styled.div`
+const SearchWrap = styled.div`
   width: 60%;
   height: 70px;
 `;
@@ -17,7 +17,7 @@ const Input = styled.input`
 `;
 
 export default () => (
-  <Search>
+  <SearchWrap>
     <Input placeholder="Search Movie. ex) code" />
-  </Search>
+  </SearchWrap>
 );

@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { bindActionCreators } from "redux";
+import { getQuery } from "../Redux/Action";
+import { connect } from "react-redux";
 
 const SearchWrap = styled.div`
   width: 60%;
@@ -24,4 +27,19 @@ const Search = () => {
   );
 };
 
-export default Search;
+const mapStateToProps = state => {
+  return {
+    query: state.search.query
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+      getQuery
+    },
+    dispatch
+  );
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

@@ -1,8 +1,8 @@
 import React from "react";
-import MoviePresenter from "./MoviePresenter";
+import TVPresenter from "./TVPresenter";
 import { tvApi } from "../../../api";
 
-class MovieContainer extends React.Component {
+class TVContainer extends React.Component {
   state = {
     loading: null,
     error: null,
@@ -42,7 +42,7 @@ class MovieContainer extends React.Component {
     const { loading, error, popResults, topResults, onAirResults } = this.state;
     const limitLength = 5;
     return (
-      <MoviePresenter
+      <TVPresenter
         loading={loading}
         error={error}
         popResults={
@@ -60,4 +60,4 @@ class MovieContainer extends React.Component {
   }
 }
 
-export default MovieContainer;
+export default TVContainer;

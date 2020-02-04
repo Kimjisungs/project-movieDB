@@ -3,7 +3,7 @@ import Section from "../../../Components/Section";
 import Loader from "../../../Components/Loader";
 import Poster from "../../../Components/Poster";
 
-const MoviePresenter = ({
+const TVPresenter = ({
   loading,
   error,
   popResults,
@@ -60,4 +60,4 @@ const MoviePresenter = ({
   );
 };
 
-export default MoviePresenter;
+export default TVPresenter;

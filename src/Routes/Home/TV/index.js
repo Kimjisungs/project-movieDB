@@ -1,3 +1,3 @@
-import React from "react";
+import TVContainer from "./TVContainer";
 
-export default () => <div>TV page</div>;
+export default TVContainer;

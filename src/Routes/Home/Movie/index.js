@@ -1,3 +1,3 @@
-import React from "react";
+import MovieContainer from "./MovieContainer";
 
-export default () => <div>Movie page</div>;
+export default MovieContainer;

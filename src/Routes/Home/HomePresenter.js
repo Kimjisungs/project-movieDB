@@ -98,8 +98,8 @@ const HomePresenter = ({ loading, error, popularLists }) => {
           <Tab
             to={[
               { pathname: "/home", text: "TV" },
-              { pathname: "/home/tv", text: "Movie" },
-              { pathname: "/home/People", text: "People" }
+              { pathname: "/home/movie", text: "Movie" },
+              { pathname: "/home/people", text: "People" }
             ]}
             activeStyle={{
               visible: `background-color: rgba(0, 0, 0, 0.4);border-bottom:3px solid #01d277;`,

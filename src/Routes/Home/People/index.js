@@ -1,3 +1,3 @@
-import React from "react";
+import PeopleContainer from "./PeopleContainer";
 
-export default () => <div>People page</div>;
+export default PeopleContainer;

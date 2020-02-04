@@ -4,6 +4,7 @@ import Section from "../../../Components/Section";
 import Loader from "../../../Components/Loader";
 import Poster from "../../../Components/Poster";
 import Message from "../../../Components/Message";
+import PropTypes from "prop-types";
 
 const MoviePresenter = ({
   loading,
@@ -64,5 +65,13 @@ const MoviePresenter = ({
     )}
   </WrapperContent>
 );
+
+MoviePresenter.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+  nowResults: PropTypes.array,
+  popResults: PropTypes.array,
+  topResults: PropTypes.array
+};
 
 export default MoviePresenter;

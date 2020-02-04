@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Item = styled.div`
   position: relative;
-  height: 400px;
+  height: 420px;
   width: 100%;
   background-image: url(${({ bgUrl }) => bgUrl});
   background-size: cover;
@@ -14,8 +14,9 @@ const Item = styled.div`
 
 const Title = styled.h3`
   position: absolute;
-  top: 40px;
-  left: 40px;
+  top: 60px;
+  left: 60px;
+  font-family: Georgia;
   font-size: 4rem;
   color: #fff;
   text-shadow: 2px 4px 9px rgba(0, 0, 0, 0.6);

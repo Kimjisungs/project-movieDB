@@ -4,6 +4,7 @@ import Section from "../../../Components/Section";
 import Loader from "../../../Components/Loader";
 import Poster from "../../../Components/Poster";
 import Message from "../../../Components/Message";
+import PropTypes from "prop-types";
 
 const TVPresenter = ({
   loading,
@@ -64,5 +65,13 @@ const TVPresenter = ({
     )}
   </WrapperContent>
 );
+
+TVPresenter.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+  popResults: PropTypes.array,
+  topResults: PropTypes.array,
+  onAirResults: PropTypes.array
+};
 
 export default TVPresenter;

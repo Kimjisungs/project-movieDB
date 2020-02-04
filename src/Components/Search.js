@@ -16,8 +16,12 @@ const Input = styled.input`
   color: #fff;
 `;
 
-export default () => (
-  <SearchWrap>
-    <Input placeholder="Search Movie. ex) code" />
-  </SearchWrap>
-);
+const Search = () => {
+  return (
+    <SearchWrap>
+      <Input placeholder="Search Movie. ex) code" />
+    </SearchWrap>
+  );
+};
+
+export default Search;

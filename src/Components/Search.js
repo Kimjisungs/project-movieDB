@@ -18,6 +18,6 @@ const Input = styled.input`
 
 export default () => (
   <Search>
-    <Input placeholder="Search Movie" />
+    <Input placeholder="Search Movie. ex) code" />
   </Search>
 );

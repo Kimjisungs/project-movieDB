@@ -15,8 +15,7 @@ const Item = styled.li`
 
 const Links = styled(Link)`
   display: block;
-  padding: 40px 40px;
-
+  padding: 43px 40px;
   text-align: center;
   color: #dfdfdf;
 `;

@@ -17,7 +17,7 @@ export const tvApi = {
   topRated: () => api.get("/tv/top_rated", { params }),
   onTheAir: () => api.get("/tv/on_the_air", { params }),
   tvDetail: tv_id => api.get(`/tv/${tv_id}`, { params }),
-  searchMovie: query =>
+  searchTv: query =>
     api.get(`/search/movie`, {
       params: { ...params, query }
     })

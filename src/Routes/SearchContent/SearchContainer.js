@@ -46,6 +46,19 @@ class SearchContainer extends React.Component {
     this.getApi(this.uriQuery());
   }
 
+  componentDidUpdate(prevProps) {
+    const {
+      location: { search: prevUriQuery }
+    } = prevProps;
+    const {
+      location: { search: uriQuery }
+    } = this.props;
+
+    if (prevUriQuery !== uriQuery) {
+      this.getApi(this.uriQuery());
+    }
+  }
+
   render() {
     const { loading, error, tvResults } = this.state;
     return (

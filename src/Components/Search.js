@@ -26,7 +26,7 @@ const Form = styled.form`
 
 const handleSubmit = props => event => {
   event.preventDefault();
-  props.history.push(`/search?query=${props.query}`);
+  if (props.query !== "") props.history.push(`/search?query=${props.query}`);
 };
 
 const updateQuery = props => ({ target }) => {

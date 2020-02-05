@@ -24,28 +24,34 @@ const Form = styled.form`
   height: 100%;
 `;
 
-const handleSubmit = props => event => {
-  event.preventDefault();
-  if (props.query !== "") props.history.push(`/search?query=${props.query}`);
-};
+class Search extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-const updateQuery = props => ({ target }) => {
-  props.getQuery(target.value);
-};
+  handleSubmit = props => event => {
+    event.preventDefault();
+    if (props.query !== "") props.history.push(`/search?query=${props.query}`);
+  };
 
-const Search = props => {
-  return (
-    <SearchWrap>
-      <Form onSubmit={handleSubmit(props)}>
-        <Input
-          placeholder="Search Movie. ex) code"
-          onChange={updateQuery(props)}
-          value={props.query}
-        />
-      </Form>
-    </SearchWrap>
-  );
-};
+  updateQuery = props => ({ target }) => {
+    props.getQuery(target.value);
+  };
+
+  render() {
+    return (
+      <SearchWrap>
+        <Form onSubmit={this.handleSubmit(this.props)}>
+          <Input
+            placeholder="Search Movie. ex) code"
+            onChange={this.updateQuery(this.props)}
+            value={this.props.query}
+          />
+        </Form>
+      </SearchWrap>
+    );
+  }
+}
 
 const mapStateToProps = state => {
   return {

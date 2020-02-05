@@ -29,4 +29,7 @@
      1. visual image가 없을경우 '이미지가 없습니다'
 
 7. visual
+
    - 데이터 제한 5개 filter
+
+8. Proptype check

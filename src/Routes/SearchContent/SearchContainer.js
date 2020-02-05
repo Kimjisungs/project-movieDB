@@ -47,9 +47,14 @@ class SearchContainer extends React.Component {
   }
 
   render() {
+    const { loading, error, tvResults } = this.state;
     return (
       <>
-        <SearchPresenter />
+        <SearchPresenter
+          loading={loading}
+          error={error}
+          tvResults={tvResults}
+        />
       </>
     );
   }

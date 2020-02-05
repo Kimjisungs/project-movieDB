@@ -9,14 +9,14 @@ import Header from "./Header";
 import Wrapper from "./Wrapper";
 
 import Home from "../Routes/Home";
-import Search from "../Routes/Search";
+import SearchContent from "../Routes/SearchContent";
 
 export default () => (
   <Router>
     <Header />
     <Wrapper>
       <Switch>
-        <Route path="/search" component={Search} />
+        <Route path="/search" component={SearchContent} />
         <Route path="/home" component={Home} />
         <Redirect from="*" to="/home" />
       </Switch>

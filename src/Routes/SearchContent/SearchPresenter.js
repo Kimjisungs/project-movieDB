@@ -3,7 +3,7 @@ import Section from "../../Components/Section";
 import Poster from "../../Components/Poster";
 import Loader from "../../Components/Loader";
 
-const SearchPresenter = ({ loading, error, tvResults }) => {
+const SearchPresenter = ({ loading, error, tvResults, movieResults }) => {
   return (
     <>
       {loading ? (
@@ -20,6 +20,20 @@ const SearchPresenter = ({ loading, error, tvResults }) => {
                   image={tv.poster_path}
                   date={tv.first_air_date}
                   overview={tv.overview}
+                />
+              ))}
+            </Section>
+          )}
+          {movieResults && movieResults.length > 0 && (
+            <Section title="Movies">
+              {movieResults.map(movie => (
+                <Poster
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  image={movie.poster_path}
+                  date={movie.release_date}
+                  overview={movie.overview}
                 />
               ))}
             </Section>

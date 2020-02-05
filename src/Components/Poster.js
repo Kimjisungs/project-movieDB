@@ -23,7 +23,6 @@ const Text = styled.div`
 
 const Title = styled.h3`
   font-size: 1.25rem;
-
   overflow: hidden;
   white-space: normal;
   height: 1.2em;
@@ -44,6 +43,7 @@ const Desc = styled.p`
   white-space: normal;
   line-height: 1.2;
   height: 3.6em;
+  margin-bottom: 10px;
   font-size: 1rem;
   font-weight: 300;
   text-align: left;

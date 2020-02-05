@@ -42,8 +42,14 @@ class SearchContainer extends React.Component {
     }
   };
 
+  redirectHome = () => {
+    const { history } = this.props;
+    if (!this.uriQuery()) history.push("/home");
+  };
+
   componentDidMount() {
     this.getApi(this.uriQuery());
+    this.redirectHome();
   }
 
   componentDidUpdate(prevProps) {

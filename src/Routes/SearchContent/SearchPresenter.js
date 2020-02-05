@@ -2,6 +2,7 @@ import React from "react";
 import Section from "../../Components/Section";
 import Poster from "../../Components/Poster";
 import Loader from "../../Components/Loader";
+import Message from "../../Components/Message";
 
 const SearchPresenter = ({ loading, error, tvResults, movieResults }) => {
   return (
@@ -38,6 +39,7 @@ const SearchPresenter = ({ loading, error, tvResults, movieResults }) => {
               ))}
             </Section>
           )}
+          {error && <Message text={error} />}
         </>
       )}
     </>

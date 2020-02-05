@@ -38,7 +38,7 @@ class SearchContainer extends React.Component {
       });
     } catch {
       this.setState({
-        error: "No Search Result"
+        error: "Page Not Found"
       });
     } finally {
       this.setState({

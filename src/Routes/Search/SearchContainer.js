@@ -1,13 +1,18 @@
 import React from "react";
 import SearchPresenter from "./SearchPresenter";
 import { tvApi } from "../../api";
+import { connect } from "react-redux";
 
 class SearchContainer extends React.Component {
-  state = {
-    loading: true,
-    error: null,
-    tvResults: null
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: true,
+      error: null,
+      tvResults: null
+    };
+  }
 
   getSearchApi = async () => {
     try {
@@ -35,4 +40,10 @@ class SearchContainer extends React.Component {
   }
 }
 
-export default SearchContainer;
+const mapStateToProps = state => {
+  return {
+    query: state.search.query
+  };
+};
+
+export default connect(mapStateToProps)(SearchContainer);

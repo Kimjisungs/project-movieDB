@@ -33,3 +33,5 @@
    - 데이터 제한 5개 filter
 
 8. Proptype check
+
+9. uri에 query 값이 없을때 홈으로 이동

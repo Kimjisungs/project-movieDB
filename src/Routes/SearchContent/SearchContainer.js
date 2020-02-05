@@ -65,12 +65,15 @@ class SearchContainer extends React.Component {
 
   render() {
     const { loading, error, tvResults } = this.state;
+    const limitLength = 10;
     return (
       <>
         <SearchPresenter
           loading={loading}
           error={error}
-          tvResults={tvResults}
+          tvResults={
+            tvResults && tvResults.filter((empty, index) => index < limitLength)
+          }
         />
       </>
     );

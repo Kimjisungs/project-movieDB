@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { bindActionCreators } from "redux";
 import { getQuery } from "../Redux/Action";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 const SearchWrap = styled.div`
   width: 60%;
@@ -19,6 +20,15 @@ const Input = styled.input`
   color: #fff;
 `;
 
+const Form = styled.form`
+  height: 100%;
+`;
+
+const handleSubmit = props => event => {
+  event.preventDefault();
+  props.history.push(`/search?query=${props.query}`);
+};
+
 const updateQuery = props => ({ target }) => {
   props.getQuery(target.value);
 };
@@ -26,11 +36,13 @@ const updateQuery = props => ({ target }) => {
 const Search = props => {
   return (
     <SearchWrap>
-      <Input
-        placeholder="Search Movie. ex) code"
-        onChange={updateQuery(props)}
-        value={props.query}
-      />
+      <Form onSubmit={handleSubmit(props)}>
+        <Input
+          placeholder="Search Movie. ex) code"
+          onChange={updateQuery(props)}
+          value={props.query}
+        />
+      </Form>
     </SearchWrap>
   );
 };
@@ -50,4 +62,4 @@ const mapDispatchToProps = dispatch => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Search));

@@ -1,6 +1,6 @@
 import React from "react";
 import SearchPresenter from "./SearchPresenter";
-import { tvApi } from "../../api";
+import { tvApi, movieApi } from "../../api";
 import { connect } from "react-redux";
 import qs from "query-string";
 
@@ -11,7 +11,8 @@ class SearchContainer extends React.Component {
     this.state = {
       loading: true,
       error: null,
-      tvResults: null
+      tvResults: null,
+      movieResults: null
     };
   }
 
@@ -28,8 +29,12 @@ class SearchContainer extends React.Component {
       const {
         data: { results: tvResults }
       } = await tvApi.searchTv(query);
+      const {
+        data: { results: movieResults }
+      } = await movieApi.searchMovie(query);
       this.setState({
-        tvResults
+        tvResults,
+        movieResults
       });
     } catch {
       this.setState({
@@ -64,7 +69,7 @@ class SearchContainer extends React.Component {
   }
 
   render() {
-    const { loading, error, tvResults } = this.state;
+    const { loading, error, tvResults, movieResults } = this.state;
     const limitLength = 10;
     return (
       <>
@@ -73,6 +78,10 @@ class SearchContainer extends React.Component {
           error={error}
           tvResults={
             tvResults && tvResults.filter((empty, index) => index < limitLength)
+          }
+          movieResults={
+            movieResults &&
+            movieResults.filter((empty, index) => index < limitLength)
           }
         />
       </>

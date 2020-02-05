@@ -19,10 +19,18 @@ const Input = styled.input`
   color: #fff;
 `;
 
-const Search = () => {
+const updateQuery = props => ({ target }) => {
+  props.getQuery(target.value);
+};
+
+const Search = props => {
   return (
     <SearchWrap>
-      <Input placeholder="Search Movie. ex) code" />
+      <Input
+        placeholder="Search Movie. ex) code"
+        onChange={updateQuery(props)}
+        value={props.query}
+      />
     </SearchWrap>
   );
 };

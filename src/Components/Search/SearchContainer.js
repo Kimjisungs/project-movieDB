@@ -22,13 +22,12 @@ class SearchContainer extends React.Component {
   };
 
   updateQueryToRedux = (() => ({
-    search: ({ target }) => this.props.getQuery(target.value)
+    search: ({ target }) => this.props.getQuery(target.value),
+    uri: () => {
+      const nowUriQuery = this.uriQuery();
+      this.props.getQuery(nowUriQuery);
+    }
   }))();
-
-  updateUriQueryToRedux = () => {
-    const nowUriQuery = this.uriQuery();
-    this.props.getQuery(nowUriQuery);
-  };
 
   updateEmptyQueryToRedux = () => this.props.getQuery("");
 
@@ -46,12 +45,12 @@ class SearchContainer extends React.Component {
     if (prevUriQuery !== nowUriQuery) {
       pathname.includes("/home")
         ? this.updateEmptyQueryToRedux()
-        : this.updateUriQueryToRedux();
+        : this.updateQueryToRedux.uri();
     }
   };
 
   componentDidMount() {
-    this.updateUriQueryToRedux();
+    this.updateQueryToRedux.uri();
   }
 
   componentDidUpdate(prevProps) {

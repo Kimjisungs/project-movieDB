@@ -9,7 +9,7 @@ import qs from "query-string";
 class SearchContainer extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
-    const { query: searchQuery, history } = this.props;
+    const { queryFromRedux: searchQuery, history } = this.props;
     if (searchQuery !== "") history.push(`/search?query=${searchQuery}`);
   };
 
@@ -22,12 +22,13 @@ class SearchContainer extends React.Component {
   };
 
   render() {
-    const { query } = this.props;
+    const { queryFromRedux: searchQuery } = this.props;
+
     return (
       <SearchPresenter
         handleSubmit={this.handleSubmit}
         updateQuery={this.updateQuery}
-        searchQuery={query}
+        searchQuery={searchQuery}
       />
     );
   }
@@ -35,7 +36,7 @@ class SearchContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    query: state.search.query
+    queryFromRedux: state.search.query
   };
 };
 

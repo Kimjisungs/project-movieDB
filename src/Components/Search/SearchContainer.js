@@ -21,7 +21,9 @@ class SearchContainer extends React.Component {
     return uriQuery;
   };
 
-  updateSearchQueryToRedux = ({ target }) => this.props.getQuery(target.value);
+  updateQueryToRedux = (() => ({
+    search: ({ target }) => this.props.getQuery(target.value)
+  }))();
 
   updateUriQueryToRedux = () => {
     const nowUriQuery = this.uriQuery();
@@ -62,7 +64,7 @@ class SearchContainer extends React.Component {
     return (
       <SearchPresenter
         handleSubmit={this.handleSubmit}
-        updateQuery={this.updateSearchQueryToRedux}
+        updateQuery={this.updateQueryToRedux.search}
         searchQuery={searchQuery}
       />
     );

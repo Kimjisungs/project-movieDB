@@ -21,13 +21,17 @@ class SearchContainer extends React.Component {
     return uriQuery;
   };
 
+  updateQueryToRedux = ({ target }) => {
+    this.props.getQuery(target.value);
+  };
+
   render() {
     const { queryFromRedux: searchQuery } = this.props;
 
     return (
       <SearchPresenter
         handleSubmit={this.handleSubmit}
-        updateQuery={this.updateQuery}
+        updateQuery={this.updateQueryToRedux}
         searchQuery={searchQuery}
       />
     );

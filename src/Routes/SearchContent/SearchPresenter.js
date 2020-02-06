@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Section from "../../Components/Section";
 import Poster from "../../Components/Poster";
 import Loader from "../../Components/Loader";
@@ -48,6 +49,13 @@ const SearchPresenter = ({ loading, error, tvResults, movieResults }) => {
       )}
     </>
   );
+};
+
+SearchPresenter.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+  tvResults: PropTypes.array,
+  movieResults: PropTypes.string
 };
 
 export default SearchPresenter;

@@ -63,9 +63,9 @@ class SearchContainer extends React.Component {
     } = prevProps;
     const { query: prevUriQuery } = qs.parse(search);
 
-    if (prevUriQuery !== this.uriQuery()) {
-      this.getApi(this.uriQuery());
-    }
+    const nowUriQuiry = this.uriQuery();
+
+    if (prevUriQuery !== nowUriQuiry) this.getApi(nowUriQuiry);
   }
 
   render() {

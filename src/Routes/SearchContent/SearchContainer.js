@@ -1,7 +1,6 @@
 import React from "react";
 import SearchPresenter from "./SearchPresenter";
 import { tvApi, movieApi } from "../../api";
-import { connect } from "react-redux";
 import qs from "query-string";
 
 class SearchContainer extends React.Component {
@@ -89,10 +88,4 @@ class SearchContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    query: state.search.query
-  };
-};
-
-export default connect(mapStateToProps)(SearchContainer);
+export default SearchContainer;

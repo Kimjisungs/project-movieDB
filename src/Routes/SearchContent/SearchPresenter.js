@@ -40,6 +40,10 @@ const SearchPresenter = ({ loading, error, tvResults, movieResults }) => {
             </Section>
           )}
           {error && <Message text={error} />}
+          {tvResults &&
+            tvResults.length === 0 &&
+            movieResults &&
+            movieResults.length === 0 && <Message text="Not Found Results" />}
         </>
       )}
     </>

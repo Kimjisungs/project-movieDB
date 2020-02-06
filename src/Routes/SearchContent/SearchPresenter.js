@@ -55,7 +55,7 @@ SearchPresenter.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.string,
   tvResults: PropTypes.array,
-  movieResults: PropTypes.string
+  movieResults: PropTypes.array
 };
 
 export default SearchPresenter;

@@ -56,7 +56,7 @@ class SearchContainer extends React.Component {
     this.redirectHome();
   }
 
-  componentDidUpdate(prevProps) {
+  searchData = prevProps => {
     const {
       location: { search }
     } = prevProps;
@@ -65,6 +65,10 @@ class SearchContainer extends React.Component {
     const nowUriQuiry = this.uriQuery();
 
     if (prevUriQuery !== nowUriQuiry) this.getApi(nowUriQuiry);
+  };
+
+  componentDidUpdate(prevProps) {
+    this.searchData(prevProps);
   }
 
   render() {

@@ -26,10 +26,9 @@ class SearchContainer extends React.Component {
     uri: () => {
       const nowUriQuery = this.uriQuery();
       this.props.getQuery(nowUriQuery);
-    }
+    },
+    empty: () => this.props.getQuery("")
   }))();
-
-  updateEmptyQueryToRedux = () => this.props.getQuery("");
 
   matchUriAndSearchQuery = prevProps => {
     const {
@@ -44,7 +43,7 @@ class SearchContainer extends React.Component {
 
     if (prevUriQuery !== nowUriQuery) {
       pathname.includes("/home")
-        ? this.updateEmptyQueryToRedux()
+        ? this.updateQueryToRedux.empty()
         : this.updateQueryToRedux.uri();
     }
   };

@@ -30,8 +30,23 @@ class SearchContainer extends React.Component {
     this.props.getQuery(nowUriQuery);
   };
 
+  matchUriAndSearchQuery = prevProps => {
+    const {
+      location: { search }
+    } = prevProps;
+
+    const { query: prevUriQuery } = qs.parse(search);
+    const nowUriQuery = this.uriQuery();
+
+    if (prevUriQuery !== nowUriQuery) this.updateUriQueryToRedux();
+  };
+
   componentDidMount() {
     this.updateUriQueryToRedux();
+  }
+
+  componentDidUpdate(prevProps) {
+    this.matchUriAndSearchQuery(prevProps);
   }
 
   render() {

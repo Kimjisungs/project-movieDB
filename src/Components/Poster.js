@@ -81,7 +81,7 @@ export default ({ id, title, image, date, overview }) => (
       </Img>
       <Text>
         <Title>{title}</Title>
-        <Date>{date.substring(0, 4)}</Date>
+        <Date>{date && date.substring(0, 4)}</Date>
         <Desc>{overview}</Desc>
       </Text>
     </Links>

@@ -32,6 +32,16 @@
 
    - 데이터 제한 5개 filter
 
-8. Proptype check
+8. poster에 이미지가 있을때와 없을떄
 
-9. uri에 query 값이 없을때 홈으로 이동
+9. Proptype check
+
+10. uri에 query 값이 없을때 홈으로 이동
+
+11. uri에 query 값이 있는 상태에서 새로고침하면 input value에 값이 없을때 uri의 query값을 update하여 넣어주는것.
+
+12. 뒤로가기 했을때 query값이 남아있는것.
+
+13. 뒤로가기를 하더라도 home url 에서는 searchQuery값이 없게 처리.
+
+14. home에서는 componentDidMount가 없게 처리

@@ -19,7 +19,7 @@ export const tvApi = {
   tvDetail: tv_id => api.get(`/tv/${tv_id}`, { params }),
   searchTv: query =>
     api.get(`/search/tv`, {
-      params: { ...params, query }
+      params: { ...params, query: encodeURIComponent(query) }
     })
 };
 
@@ -30,7 +30,7 @@ export const movieApi = {
   movieDetail: movie_id => api.get(`/tv/${movie_id}`, { params }),
   searchMovie: query =>
     api.get(`/search/movie`, {
-      params: { ...params, query }
+      params: { ...params, query: encodeURIComponent(query) }
     })
 };
 

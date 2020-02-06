@@ -4,20 +4,21 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { getQuery } from "../../Redux/Action";
 import SearchPresenter from "./SearchPresenter";
+import qs from "query-string";
 
 class SearchContainer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleSubmit = event => {
     event.preventDefault();
     const { query: searchQuery, history } = this.props;
     if (searchQuery !== "") history.push(`/search?query=${searchQuery}`);
   };
 
-  updateQuery = ({ target }) => {
-    this.props.getQuery(target.value);
+  uriQuery = () => {
+    const {
+      location: { search }
+    } = this.props;
+    const { query: uriQuery } = qs.parse(search);
+    return uriQuery;
   };
 
   render() {

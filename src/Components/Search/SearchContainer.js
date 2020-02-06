@@ -51,7 +51,8 @@ class SearchContainer extends React.Component {
   };
 
   componentDidMount() {
-    this.updateQueryToRedux.uri();
+    const nowUriQuery = this.uriQuery();
+    nowUriQuery && this.updateQueryToRedux.uri();
   }
 
   componentDidUpdate(prevProps) {

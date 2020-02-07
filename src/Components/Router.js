@@ -10,6 +10,7 @@ import Wrapper from "./Wrapper";
 
 import Home from "../Routes/Home";
 import SearchContent from "../Routes/SearchContent";
+import Detail from "../Routes/Detail";
 
 export default () => (
   <Router>
@@ -17,6 +18,7 @@ export default () => (
     <Wrapper>
       <Switch>
         <Route path="/search" component={SearchContent} />
+        <Route path="/detail" component={Detail} />
         <Route path="/home" component={Home} />
         <Redirect from="*" to="/home" />
       </Switch>

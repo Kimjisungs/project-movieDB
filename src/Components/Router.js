@@ -17,8 +17,10 @@ export default () => (
     <Header />
     <Wrapper>
       <Switch>
+        <Route path="/tvDetail" component={Detail} />
+        <Route path="/movieDetail" component={Detail} />
+        <Route path="/peopleDetail" component={Detail} />
         <Route path="/search" component={SearchContent} />
-        <Route path="/detail" component={Detail} />
         <Route path="/home" component={Home} />
         <Redirect from="*" to="/home" />
       </Switch>

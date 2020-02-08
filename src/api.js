@@ -16,9 +16,12 @@ export const tvApi = {
   popular: () => api.get("/tv/popular", { params }),
   topRated: () => api.get("/tv/top_rated", { params }),
   onTheAir: () => api.get("/tv/on_the_air", { params }),
-  tvDetail: tv_id => api.get(`/tv/${tv_id}`, { params }),
+  tvDetail: tv_id =>
+    api.get(`tv/${tv_id}`, {
+      params: { ...params, append_to_response: "videos" }
+    }),
   searchTv: query =>
-    api.get(`/search/tv`, {
+    api.get(`search/tv`, {
       params: { ...params, query: encodeURIComponent(query) }
     })
 };
@@ -27,18 +30,24 @@ export const movieApi = {
   nowPlaying: () => api.get("/movie/now_playing", { params }),
   popular: () => api.get("/movie/popular", { params }),
   topRated: () => api.get("/movie/top_rated", { params }),
-  movieDetail: movie_id => api.get(`/tv/${movie_id}`, { params }),
+  movieDetail: movie_id =>
+    api.get(`tv/${movie_id}`, {
+      params: { ...params, append_to_response: "videos" }
+    }),
   searchMovie: query =>
-    api.get(`/search/movie`, {
+    api.get(`search/movie`, {
       params: { ...params, query: encodeURIComponent(query) }
     })
 };
 
 export const peopleApi = {
   popular: () => api.get("/person/popular", { params }),
-  peopleDetail: people_id => api.get(`/person/${people_id}`, { params }),
+  peopleDetail: people_id =>
+    api.get(`person/${people_id}`, {
+      params: { ...params, append_to_response: "videos" }
+    }),
   peoplehMovie: query =>
-    api.get(`/search/person`, {
+    api.get(`search/person`, {
       params: { ...params, query }
     })
 };

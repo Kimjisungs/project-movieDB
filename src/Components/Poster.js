@@ -66,9 +66,17 @@ const Links = styled(Link)`
   }
 `;
 
-export default ({ id, title, image, date, overview }) => (
+export default ({ id, title, image, date, overview, isMovie }) => (
   <Poster>
-    <Links>
+    <Links
+      to={
+        isMovie === "tv"
+          ? `/tvDetail?id=${id}`
+          : isMovie === "movie"
+          ? `/movieDetail?id=${id}`
+          : `/peopleDetail?id=${id}`
+      }
+    >
       <Img>
         <img
           src={

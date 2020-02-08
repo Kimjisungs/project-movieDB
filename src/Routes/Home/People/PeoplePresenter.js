@@ -12,7 +12,6 @@ const PeoplePresenter = ({ loading, error, popResults }) => (
       <Loader />
     ) : (
       <>
-        {console.log(popResults)}
         {popResults && popResults.length > 0 && (
           <Section title="Popular">
             {popResults.map(person => (

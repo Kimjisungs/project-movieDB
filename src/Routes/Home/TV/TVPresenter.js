@@ -28,6 +28,7 @@ const TVPresenter = ({
                 image={tv.poster_path}
                 date={tv.first_air_date}
                 overview={tv.overview}
+                isMovie="tv"
               />
             ))}
           </Section>
@@ -42,6 +43,7 @@ const TVPresenter = ({
                 image={tv.poster_path}
                 date={tv.first_air_date}
                 overview={tv.overview}
+                isMovie="tv"
               />
             ))}
           </Section>
@@ -56,6 +58,7 @@ const TVPresenter = ({
                 image={tv.poster_path}
                 date={tv.first_air_date}
                 overview={tv.overview}
+                isMovie="tv"
               />
             ))}
           </Section>

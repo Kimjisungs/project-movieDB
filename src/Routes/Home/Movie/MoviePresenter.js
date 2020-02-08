@@ -28,6 +28,7 @@ const MoviePresenter = ({
                 image={movie.poster_path}
                 date={movie.release_date}
                 overview={movie.overview}
+                isMovie="movie"
               />
             ))}
           </Section>
@@ -42,6 +43,7 @@ const MoviePresenter = ({
                 image={movie.poster_path}
                 date={movie.release_date}
                 overview={movie.overview}
+                isMovie="movie"
               />
             ))}
           </Section>
@@ -56,6 +58,7 @@ const MoviePresenter = ({
                 image={movie.poster_path}
                 date={movie.release_date}
                 overview={movie.overview}
+                isMovie="movie"
               />
             ))}
           </Section>

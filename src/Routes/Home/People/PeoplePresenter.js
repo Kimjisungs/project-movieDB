@@ -26,6 +26,7 @@ const PeoplePresenter = ({ loading, error, popResults }) => (
                   person.known_for[1].release_date
                 }
                 overview={person.known_for[0].overview}
+                isMovie="people"
               />
             ))}
           </Section>

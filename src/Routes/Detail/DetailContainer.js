@@ -9,7 +9,7 @@ class DetailContainer extends React.Component {
 
     const {
       location: { pathname }
-    } = this.props;
+    } = props;
 
     this.state = {
       loading: true,

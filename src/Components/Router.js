@@ -15,15 +15,15 @@ import Detail from "../Routes/Detail";
 export default () => (
   <Router>
     <Header />
-    <Wrapper>
-      <Switch>
-        <Route path="/tvDetail" component={Detail} />
-        <Route path="/movieDetail" component={Detail} />
-        <Route path="/peopleDetail" component={Detail} />
+    <Switch>
+      <Route path="/tvDetail" component={Detail} />
+      <Route path="/movieDetail" component={Detail} />
+      <Route path="/peopleDetail" component={Detail} />
+      <Wrapper>
         <Route path="/search" component={SearchContent} />
         <Route path="/home" component={Home} />
         <Redirect from="*" to="/home" />
-      </Switch>
-    </Wrapper>
+      </Wrapper>
+    </Switch>
   </Router>
 );

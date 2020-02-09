@@ -22,6 +22,7 @@ const SearchPresenter = ({ loading, error, tvResults, movieResults }) => {
                   image={tv.poster_path}
                   date={tv.first_air_date}
                   overview={tv.overview}
+                  isMovie="tv"
                 />
               ))}
             </Section>
@@ -36,6 +37,7 @@ const SearchPresenter = ({ loading, error, tvResults, movieResults }) => {
                   image={movie.poster_path}
                   date={movie.release_date}
                   overview={movie.overview}
+                  isMovie="movie"
                 />
               ))}
             </Section>

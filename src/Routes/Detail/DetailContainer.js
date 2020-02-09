@@ -50,7 +50,6 @@ class DetailContainer extends React.Component {
         loading: false
       });
     }
-    console.log(this.props);
   }
 
   render() {

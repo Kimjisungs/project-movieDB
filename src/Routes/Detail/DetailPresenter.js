@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   height: calc(100vh + 152px);
   margin-top: -152px;
   padding-top: 152px;
-  ${props => props.bgImg};
+  background-image: url(${props => props.bgImg});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -48,13 +48,14 @@ const DetailPresenter = ({ loading, error, results }) => {
     <Loader />
   ) : (
     <>
-      {console.log(results)}
       {results && (
         <Wrapper
           bgImg={
             results.backdrop_path
-              ? `background-image: url(https://image.tmdb.org/t/p/original${results.poster_path})`
-              : `background-color: #081c24`
+              ? `https://image.tmdb.org/t/p/original${results.backdrop_path}`
+              : results.profile_path
+              ? `https://image.tmdb.org/t/p/original${results.profile_path}`
+              : require("../../assets/images/no_poster.jpg")
           }
         >
           <Content>

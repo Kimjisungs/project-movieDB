@@ -20,8 +20,11 @@ export default () => (
       <Route path="/movieDetail" component={Detail} />
       <Route path="/peopleDetail" component={Detail} />
       <Wrapper>
-        <Route path="/search" component={SearchContent} />
-        <Route path="/home" component={Home} />
+        <Switch>
+          <Route path="/search" component={SearchContent} />
+          <Route path="/home" component={Home} />
+          <Redirect from="*" to="/home" />
+        </Switch>
       </Wrapper>
       <Redirect from="*" to="/home" />
     </Switch>

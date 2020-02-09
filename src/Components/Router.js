@@ -22,8 +22,8 @@ export default () => (
       <Wrapper>
         <Route path="/search" component={SearchContent} />
         <Route path="/home" component={Home} />
-        <Redirect from="*" to="/home" />
       </Wrapper>
+      <Redirect from="*" to="/home" />
     </Switch>
   </Router>
 );

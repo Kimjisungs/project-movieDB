@@ -31,7 +31,7 @@ export const movieApi = {
   popular: () => api.get("/movie/popular", { params }),
   topRated: () => api.get("/movie/top_rated", { params }),
   movieDetail: movie_id =>
-    api.get(`tv/${movie_id}`, {
+    api.get(`movie/${movie_id}`, {
       params: { ...params, append_to_response: "videos" }
     }),
   searchMovie: query =>

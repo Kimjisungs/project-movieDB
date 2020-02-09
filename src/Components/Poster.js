@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const Poster = styled.li`
+const PosterWrap = styled.li`
   width: 20%;
   padding: 0 10px;
 `;
@@ -67,7 +67,7 @@ const Links = styled(Link)`
 `;
 
 export default ({ id, title, image, date, overview, isMovie }) => (
-  <Poster>
+  <PosterWrap>
     <Links
       to={
         isMovie === "tv"
@@ -93,5 +93,5 @@ export default ({ id, title, image, date, overview, isMovie }) => (
         <Desc>{overview}</Desc>
       </Text>
     </Links>
-  </Poster>
+  </PosterWrap>
 );

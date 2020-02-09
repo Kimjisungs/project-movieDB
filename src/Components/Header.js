@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Search from "./Search";
 
 const Header = styled.header`
+  z-index: 10;
   position: relative;
   width: 1200px;
   margin: 0 auto;

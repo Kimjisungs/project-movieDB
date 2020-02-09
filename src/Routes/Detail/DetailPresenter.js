@@ -4,7 +4,7 @@ import Loader from "../../Components/Loader";
 
 const Wrapper = styled.div`
   position: relative;
-  height: calc(100vh + 152px);
+  height: calc(100vh);
   margin-top: -152px;
   padding-top: 152px;
   background-image: url(${props => props.bgImg});
@@ -26,7 +26,8 @@ const Content = styled.div`
   position: relative;
   width: 1200px;
   margin: 0 auto;
-  padding-top: 60px;
+  height: 100%;
+  padding-top: 70px;
 `;
 
 const Text = styled.div`
@@ -36,12 +37,19 @@ const Text = styled.div`
 `;
 
 const Title = styled.h3`
-  font-size: 4rem;
+  font-size: 5rem;
 `;
 
-const Date = styled.p``;
+const Date = styled.p`
+  margin-top: 20px;
+  font-size: 2rem;
+`;
 
-const Description = styled.p``;
+const Description = styled.p`
+  margin-top: 60px;
+  font-size: 2rem;
+  line-height: 1.4;
+`;
 
 const DetailPresenter = ({ loading, error, results }) => {
   return loading ? (

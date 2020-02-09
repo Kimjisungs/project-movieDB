@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 const PosterWrap = styled.li`
   width: 20%;
@@ -66,15 +67,23 @@ const Links = styled(Link)`
   }
 `;
 
-const Poster = ({ id, title, image, date, overview, isMovie }) => (
+const Poster = ({
+  id,
+  title,
+  image,
+  date,
+  overview,
+  isMovie,
+  queryFromRedux
+}) => (
   <PosterWrap>
     <Links
       to={
         isMovie === "tv"
-          ? `/tvDetail?id=${id}`
+          ? `/tvDetail?query=${queryFromRedux}&id=${id}`
           : isMovie === "movie"
-          ? `/movieDetail?id=${id}`
-          : `/peopleDetail?id=${id}`
+          ? `/movieDetail?query=${queryFromRedux}&id=${id}`
+          : `/peopleDetail?query=${queryFromRedux}&id=${id}`
       }
     >
       <Img>
@@ -96,4 +105,10 @@ const Poster = ({ id, title, image, date, overview, isMovie }) => (
   </PosterWrap>
 );
 
-export default Poster;
+const mapStateToProps = state => {
+  return {
+    queryFromRedux: state.search.query
+  };
+};
+
+export default connect(mapStateToProps)(Poster);

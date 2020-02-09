@@ -66,7 +66,7 @@ const Links = styled(Link)`
   }
 `;
 
-export default ({ id, title, image, date, overview, isMovie }) => (
+const Poster = ({ id, title, image, date, overview, isMovie }) => (
   <PosterWrap>
     <Links
       to={
@@ -95,3 +95,5 @@ export default ({ id, title, image, date, overview, isMovie }) => (
     </Links>
   </PosterWrap>
 );
+
+export default Poster;

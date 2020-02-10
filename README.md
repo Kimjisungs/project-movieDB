@@ -45,3 +45,5 @@
 13. 뒤로가기를 하더라도 home url 에서는 searchQuery값이 없게 처리.
 
 14. home에서는 componentDidMount가 없게 처리
+
+15. loading bar

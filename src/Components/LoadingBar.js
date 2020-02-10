@@ -49,12 +49,16 @@ class LoadingBar extends React.Component {
     if (loading && !startTime) loadingStart(milliSeconds);
     if (!loading && !endTime) loadingEnd(milliSeconds);
 
+    let _startTime = 0;
+    let _endTime = 0;
     if (!loading && startTime && endTime) {
-      totalSeconds = Math.abs(startTime - endTime);
+      _startTime = startTime > 500 ? 1000 - startTime : startTime;
+      _endTime = endTime > 500 ? 1000 - endTime : endTime;
+      totalSeconds = Math.abs(_startTime + _endTime);
       totalSeconds =
         totalSeconds < 100 ? `0${totalSeconds}` : `${totalSeconds}`;
       console.log(
-        `startTime : ${startTime}, endTime : ${endTime}, startTime - endTime: ${totalSeconds}`
+        `startTime : ${_startTime}, endTime : ${_endTime}, 값 > 500 ? 1000 - 값 : 값 -> ${totalSeconds}`
       );
       console.log(`양수 totalSeconds : ${totalSeconds}`);
       return totalSeconds;

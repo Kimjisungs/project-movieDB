@@ -80,10 +80,16 @@ const Poster = ({
     <Links
       to={
         isMovie === "tv"
-          ? `/tvDetail?query=${queryFromRedux}&id=${id}`
+          ? `/tvDetail?${
+              queryFromRedux ? `query=${queryFromRedux}&` : ""
+            }id=${id}`
           : isMovie === "movie"
-          ? `/movieDetail?query=${queryFromRedux}&id=${id}`
-          : `/peopleDetail?query=${queryFromRedux}&id=${id}`
+          ? `/movieDetail?${
+              queryFromRedux ? `query=${queryFromRedux}&` : ""
+            }id=${id}`
+          : `/peopleDetail?${
+              queryFromRedux ? `query=${queryFromRedux}&` : ""
+            }id=${id}`
       }
     >
       <Img>

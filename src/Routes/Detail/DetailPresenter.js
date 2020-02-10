@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Loader from "../../Components/Loader";
+import LoadingBar from "../../Components/LoadingBar";
 
 const Wrapper = styled.div`
   position: relative;
@@ -53,30 +54,35 @@ const Description = styled.p`
 `;
 
 const DetailPresenter = ({ loading, error, results }) => {
-  return loading ? (
-    <Loader />
-  ) : (
+  return (
     <>
-      {results && (
-        <Wrapper
-          bgImg={
-            results.backdrop_path
-              ? `https://image.tmdb.org/t/p/original${results.backdrop_path}`
-              : results.profile_path
-              ? `https://image.tmdb.org/t/p/original${results.profile_path}`
-              : require("../../assets/images/no_poster.jpg")
-          }
-        >
-          <Content>
-            <Text>
-              <Title>{results.name}</Title>
-              <Date>
-                {(results.first_air_date && results.first_air_date) || 2010}
-              </Date>
-              <Description>{results.overview}</Description>
-            </Text>
-          </Content>
-        </Wrapper>
+      <LoadingBar loading={loading} />
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          {results && (
+            <Wrapper
+              bgImg={
+                results.backdrop_path
+                  ? `https://image.tmdb.org/t/p/original${results.backdrop_path}`
+                  : results.profile_path
+                  ? `https://image.tmdb.org/t/p/original${results.profile_path}`
+                  : require("../../assets/images/no_poster.jpg")
+              }
+            >
+              <Content>
+                <Text>
+                  <Title>{results.name}</Title>
+                  <Date>
+                    {(results.first_air_date && results.first_air_date) || 2010}
+                  </Date>
+                  <Description>{results.overview}</Description>
+                </Text>
+              </Content>
+            </Wrapper>
+          )}
+        </>
       )}
     </>
   );

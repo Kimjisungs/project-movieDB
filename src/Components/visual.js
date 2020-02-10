@@ -22,8 +22,8 @@ const Title = styled.h3`
   text-shadow: 2px 4px 9px rgba(0, 0, 0, 0.6);
 `;
 
-export default ({ key, id, title, image }) => (
-  <Link to="/home/visual/:id">
+export default ({ key, id, title, image, isDetail }) => (
+  <Link to={`/${isDetail}?id=${id}`}>
     <Item
       bgUrl={
         image

@@ -81,6 +81,7 @@ const HomePresenter = ({ loading, error, popularLists }) => {
                     id={visual.id}
                     title={visual.name}
                     image={visual.backdrop_path}
+                    isDetail="tvDetail"
                   />
                 </div>
               ))}

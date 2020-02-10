@@ -4,9 +4,10 @@ import Loader from "../../Components/Loader";
 
 const Wrapper = styled.div`
   position: relative;
-  height: calc(100vh);
+  min-height: calc(100vh);
   margin-top: -152px;
   padding-top: 152px;
+  padding-bottom: 200px;
   background-image: url(${props => props.bgImg});
   background-repeat: no-repeat;
   background-position: center;

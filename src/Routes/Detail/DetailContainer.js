@@ -24,7 +24,7 @@ class DetailContainer extends React.Component {
 
   modal = (() => ({
     open: () => this.setState({ modal: true }),
-    close: () => this.setState({ madal: false })
+    close: () => this.setState({ modal: false })
   }))();
 
   async componentDidMount() {

@@ -25,7 +25,7 @@ const SearchPresenter = ({ handleSubmit, updateQuery, searchQuery }) => {
     <SearchWrap>
       <Form onSubmit={handleSubmit}>
         <Input
-          placeholder="Search Movie. ex) code"
+          placeholder="Search Movie. ex) code, movie"
           onChange={updateQuery}
           value={searchQuery}
         />

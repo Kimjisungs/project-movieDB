@@ -62,17 +62,25 @@ const Button = styled.button`
 `;
 
 const Modal = ({ isModal, closeModal, results }) => {
-  return (
-    <>
-      <Mask />
+  return isModal ? (
+    <Wrap>
+      <Mask onClick={closeModal} />
       <Board>
-        <VideoFrame></VideoFrame>
-        <Name></Name>
-        <Date></Date>
-        <Button>X</Button>
+        <VideoFrame>
+          <iframe
+            src={`https://www.youtube.com/embed/${results.videos.results[0].key}`}
+            title="title"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </VideoFrame>
+        <Title>{results.title || results.name}</Title>
+        <Button type="button" onClick={closeModal}>
+          X
+        </Button>
       </Board>
-    </>
-  );
+    </Wrap>
+  ) : null;
 };
 
 export default Modal;

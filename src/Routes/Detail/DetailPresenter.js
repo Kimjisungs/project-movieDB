@@ -53,6 +53,19 @@ const Description = styled.p`
   line-height: 1.4;
 `;
 
+const Button = styled.button`
+  margin-top: 40px;
+  min-width: 400px;
+  padding: 30px 30px;
+  background-color: #fcbaec;
+  border: 0 none;
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #090170;
+  cursor: pointer;
+  box-shadow: -1px 6px 21px 3px rgba(0, 0, 0, 0.75);
+`;
+
 const DetailPresenter = ({ loading, error, results }) => {
   return (
     <>
@@ -78,6 +91,7 @@ const DetailPresenter = ({ loading, error, results }) => {
                     {(results.first_air_date && results.first_air_date) || 2010}
                   </Date>
                   <Description>{results.overview}</Description>
+                  <Button>Watch a Video</Button>
                 </Text>
               </Content>
             </Wrapper>

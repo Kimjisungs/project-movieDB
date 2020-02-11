@@ -17,9 +17,15 @@ class DetailContainer extends React.Component {
       tvPath: pathname.includes("/tvDetail"),
       moviePath: pathname.includes("/movieDetail"),
       peoplePath: pathname.includes("/peopleDetail"),
-      results: null
+      results: null,
+      modal: false
     };
   }
+
+  modal = (() => ({
+    open: () => this.setState({ modal: true }),
+    close: () => this.setState({ madal: false })
+  }))();
 
   async componentDidMount() {
     const { tvPath, moviePath, peoplePath } = this.state;
@@ -53,9 +59,16 @@ class DetailContainer extends React.Component {
   }
 
   render() {
-    const { loading, error, results } = this.state;
+    const { loading, error, results, modal } = this.state;
     return (
-      <DetailPresenter loading={loading} error={error} results={results} />
+      <DetailPresenter
+        loading={loading}
+        error={error}
+        results={results}
+        openModal={this.modal.open}
+        closeModal={this.modal.close}
+        isModal={modal}
+      />
     );
   }
 }

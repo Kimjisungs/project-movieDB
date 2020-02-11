@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Loader from "../../Components/Loader";
 import LoadingBar from "../../Components/LoadingBar";
+import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
   position: relative;
@@ -66,7 +67,13 @@ const Button = styled.button`
   box-shadow: -1px 6px 21px 3px rgba(0, 0, 0, 0.75);
 `;
 
-const DetailPresenter = ({ loading, error, results }) => {
+const DetailPresenter = ({
+  loading,
+  error,
+  results,
+  openModal,
+  closeModal
+}) => {
   return (
     <>
       <LoadingBar loading={loading} />
@@ -100,6 +107,15 @@ const DetailPresenter = ({ loading, error, results }) => {
       )}
     </>
   );
+};
+
+DetailPresenter.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+  results: PropTypes.object,
+  openModal: PropTypes.func,
+  closeModal: PropTypes.func,
+  isModal: PropTypes.bool
 };
 
 export default DetailPresenter;

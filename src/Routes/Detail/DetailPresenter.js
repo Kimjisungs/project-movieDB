@@ -99,13 +99,24 @@ const DetailPresenter = ({
                   <Date>
                     {(results.first_air_date && results.first_air_date) || 2010}
                   </Date>
-                  <Description>{results.overview}</Description>
-                  <Button onClick={openModal}>Watch a Video</Button>
-                  <Modal
-                    closeModal={closeModal}
-                    isModal={isModal}
-                    results={results}
-                  />
+                  <Description>
+                    {results.overview || results.biography}
+                  </Description>
+                  {console.log(results)}
+                  {results.videos &&
+                    results.videos.results &&
+                    results.videos.results.length > 0 && (
+                      <>
+                        <Button type="button" onClick={openModal}>
+                          Watch a Video
+                        </Button>
+                        <Modal
+                          closeModal={closeModal}
+                          isModal={isModal}
+                          results={results}
+                        />
+                      </>
+                    )}
                 </Text>
               </Content>
             </Wrapper>

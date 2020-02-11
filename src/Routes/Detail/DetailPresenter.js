@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Loader from "../../Components/Loader";
 import LoadingBar from "../../Components/LoadingBar";
+import Modal from "../../Components/Modal";
 import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
@@ -72,7 +73,8 @@ const DetailPresenter = ({
   error,
   results,
   openModal,
-  closeModal
+  closeModal,
+  isModal
 }) => {
   return (
     <>
@@ -98,7 +100,12 @@ const DetailPresenter = ({
                     {(results.first_air_date && results.first_air_date) || 2010}
                   </Date>
                   <Description>{results.overview}</Description>
-                  <Button>Watch a Video</Button>
+                  <Button openModal={openModal}>Watch a Video</Button>
+                  <Modal
+                    closeModal={closeModal}
+                    isModal={isModal}
+                    results={results}
+                  />
                 </Text>
               </Content>
             </Wrapper>

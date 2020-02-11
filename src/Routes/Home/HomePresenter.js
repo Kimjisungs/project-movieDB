@@ -54,12 +54,8 @@ const HomePresenter = ({ loading, error, popularLists }) => {
     loop: true,
     centeredSlides: true,
     autoplay: {
-      delay: 4000,
+      delay: 5000,
       disableOnInteraction: false
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev"
     },
     pagination: {
       el: ".swiper-pagination",

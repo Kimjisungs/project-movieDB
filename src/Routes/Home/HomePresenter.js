@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import "../../assets/css/swiper.css";
+import "../../assets/css/custom.css";
 import Swiper from "react-id-swiper";
 import Router from "./Router";
 import Tab from "../../Components/Tab";

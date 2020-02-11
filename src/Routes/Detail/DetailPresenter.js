@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Loader from "../../Components/Loader";
 import LoadingBar from "../../Components/LoadingBar";
 import Modal from "../../Components/Modal";
+import Message from "../../Components/Message";
 import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
@@ -121,6 +122,7 @@ const DetailPresenter = ({
               </Content>
             </Wrapper>
           )}
+          {error && <Message text={error} />}
         </>
       )}
     </>

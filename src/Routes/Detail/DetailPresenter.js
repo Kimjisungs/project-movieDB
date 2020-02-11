@@ -100,7 +100,7 @@ const DetailPresenter = ({
                     {(results.first_air_date && results.first_air_date) || 2010}
                   </Date>
                   <Description>{results.overview}</Description>
-                  <Button openModal={openModal}>Watch a Video</Button>
+                  <Button onClick={openModal}>Watch a Video</Button>
                   <Modal
                     closeModal={closeModal}
                     isModal={isModal}

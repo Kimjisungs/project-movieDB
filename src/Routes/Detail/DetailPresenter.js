@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Helmet from "react-helmet";
 import Loader from "../../Components/Loader";
 import LoadingBar from "../../Components/LoadingBar";
 import Modal from "../../Components/Modal";
@@ -79,6 +80,11 @@ const DetailPresenter = ({
 }) => {
   return (
     <>
+      <Helmet>
+        <title>
+          {(results && results.name && results.name) || ""} - Movie DB
+        </title>
+      </Helmet>
       <LoadingBar loading={loading} />
       {loading ? (
         <Loader />

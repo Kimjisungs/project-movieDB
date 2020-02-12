@@ -86,6 +86,7 @@ class SearchContainer extends React.Component {
             movieResults &&
             movieResults.filter((empty, index) => index < limitLength)
           }
+          uriQuery={this.uriQuery()}
         />
       </>
     );

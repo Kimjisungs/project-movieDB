@@ -1,13 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Helmet from "react-helmet";
 import Section from "../../Components/Section";
 import Poster from "../../Components/Poster";
 import Loader from "../../Components/Loader";
 import Message from "../../Components/Message";
 
-const SearchPresenter = ({ loading, error, tvResults, movieResults }) => {
+const SearchPresenter = ({
+  loading,
+  error,
+  tvResults,
+  movieResults,
+  uriQuery
+}) => {
   return (
     <>
+      <Helmet>
+        <title>{uriQuery} - Movie DB</title>
+      </Helmet>
       {loading ? (
         <Loader />
       ) : (

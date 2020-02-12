@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Helmet from "react-helmet";
 import "../../assets/css/swiper.css";
 import "../../assets/css/custom.css";
 import Swiper from "react-id-swiper";
@@ -64,6 +65,9 @@ const HomePresenter = ({ loading, error, popularLists }) => {
   };
   return (
     <>
+      <Helmet>
+        <title>Home - Movie DB</title>
+      </Helmet>
       {loading ? (
         <LoadingWrap>
           <Loader />

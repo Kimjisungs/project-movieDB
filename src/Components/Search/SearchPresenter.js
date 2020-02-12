@@ -4,6 +4,9 @@ import styled from "styled-components";
 const SearchWrap = styled.div`
   width: 60%;
   height: 70px;
+  @media all and (max-width: 1024px) {
+    height: 50px;
+  }
 `;
 
 const Input = styled.input`
@@ -14,6 +17,10 @@ const Input = styled.input`
   background-color: transparent;
   border: 4px solid #dfdfdf;
   color: #fff;
+  @media all and (max-width: 1024px) {
+    border: 2px solid #dfdfdf;
+    font-size: 1rem;
+  }
 `;
 
 const Form = styled.form`
@@ -36,6 +43,9 @@ const Button = styled.button`
   }
   &:active {
     background-color: #b9b9b9;
+  }
+  @media all and (max-width: 1024px) {
+    width: 50px;
   }
 `;
 

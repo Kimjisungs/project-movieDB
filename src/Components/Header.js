@@ -9,6 +9,10 @@ const Header = styled.header`
   width: 1200px;
   margin: 0 auto;
   padding: 30px 0;
+  @media all and (max-width: 1024px) {
+    width: auto;
+    padding: 20px 20px;
+  }
 `;
 
 const Logo = styled.h1`
@@ -17,6 +21,9 @@ const Logo = styled.h1`
   width: 100px;
   a {
     display: block;
+  }
+  @media all and (max-width: 1024px) {
+    width: 60px;
   }
 `;
 
@@ -29,6 +36,9 @@ const SearchWrap = styled.div`
   justify-content: flex-end;
   height: 100%;
   width: 100%;
+  @media all and (max-width: 1024px) {
+    right: 20px;
+  }
 `;
 
 export default () => (

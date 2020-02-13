@@ -18,6 +18,10 @@ const Links = styled(Link)`
   padding: 43px 40px;
   text-align: center;
   color: #dfdfdf;
+  @media all and (max-width: 1024px) {
+    padding: 26px 40px;
+    font-size: 1rem;
+  }
 `;
 
 export default withRouter(props => {

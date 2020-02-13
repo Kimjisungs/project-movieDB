@@ -17,6 +17,10 @@ const TabContainer = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  @media all and (max-width: 758px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `;
 
 const TabTitle = styled.h2`
@@ -25,11 +29,23 @@ const TabTitle = styled.h2`
   font-weight: 700;
   color: #01d277;
   text-align: center;
+  @media all and (max-width: 1024px) {
+    padding: 20px;
+    font-size: 1.75rem;
+  }
+  @media all and (max-width: 758px) {
+    width: 100%;
+    padding: 30px 20px;
+    font-size: 1.5rem;
+  }
 `;
 
 const TabWrap = styled.div`
   position: absolute;
   right: 0;
+  @media all and (max-width: 758px) {
+    position: static;
+  }
 `;
 
 const ErrorWrap = styled.div`

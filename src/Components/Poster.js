@@ -6,6 +6,15 @@ import { connect } from "react-redux";
 const PosterWrap = styled.li`
   width: 20%;
   padding: 0 10px;
+  @media all and (max-width: 1024px) {
+    width: 25%;
+  }
+  @media all and (max-width: 768px) {
+    width: 33.333%;
+  }
+  @media all and (max-width: 540px) {
+    width: 50%;
+  }
 `;
 
 const Img = styled.div`
@@ -15,6 +24,9 @@ const Img = styled.div`
     width: 100%;
   }
   transition: opacity 0.3s linear;
+  @media all and (max-width: 1024px) {
+    height: auto;
+  }
 `;
 
 const Text = styled.div`

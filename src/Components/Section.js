@@ -13,6 +13,10 @@ const Title = styled.h2`
   padding: 30px;
   font-size: 1.75rem;
   color: #dfdfdf;
+  @media all and (max-width: 1024px) {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
 `;
 
 const Layout = styled.ul`

@@ -10,6 +10,9 @@ const Item = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  @media all and (max-width: 1024px) {
+    height: 260px;
+  }
 `;
 
 const Title = styled.h3`
@@ -20,6 +23,11 @@ const Title = styled.h3`
   font-size: 4rem;
   color: #fff;
   text-shadow: 2px 4px 9px rgba(0, 0, 0, 0.6);
+  @media all and (max-width: 1024px) {
+    top: 30px;
+    left: 30px;
+    font-size: 2rem;
+  }
 `;
 
 export default ({ key, id, title, image, isDetail }) => (

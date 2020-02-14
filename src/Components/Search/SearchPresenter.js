@@ -29,6 +29,7 @@ const Form = styled.form`
 `;
 
 const Button = styled.button`
+  outline: none;
   position: absolute;
   top: 0;
   right: 0;
@@ -42,7 +43,7 @@ const Button = styled.button`
     background-color: #a2a2a2;
   }
   &:active {
-    background-color: #b9b9b9;
+    background-color: #01d277;
   }
   @media all and (max-width: 1024px) {
     width: 50px;

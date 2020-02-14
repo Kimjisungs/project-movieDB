@@ -24,7 +24,8 @@ const Wrapper = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7)
+    background-color: rgba(0, 0, 0, 0.7);
+  }
 `;
 
 const Content = styled.div`
@@ -34,27 +35,44 @@ const Content = styled.div`
   margin: 0 auto;
   height: 100%;
   padding-top: 70px;
+  @media all and (max-width: 1024px) {
+    width: 100%;
+    margin: 0;
+  }
 `;
 
 const Text = styled.div`
   padding: 0 100px;
   text-align: center;
   color: #dfdfdf;
+  @media all and (max-width: 1024px) {
+    padding: 0 50px;
+  }
 `;
 
 const Title = styled.h3`
   font-size: 5rem;
+  @media all and (max-width: 1024px) {
+    font-size: 2.6rem;
+  }
 `;
 
 const Date = styled.p`
   margin-top: 20px;
   font-size: 2rem;
+  @media all and (max-width: 1024px) {
+    font-size: 1.75rem;
+  }
 `;
 
 const Description = styled.p`
   margin-top: 60px;
   font-size: 2rem;
   line-height: 1.4;
+  @media all and (max-width: 1024px) {
+    margin-top: 20px;
+    font-size: 1rem;
+  }
 `;
 
 const Button = styled.button`
@@ -68,6 +86,11 @@ const Button = styled.button`
   color: #090170;
   cursor: pointer;
   box-shadow: -1px 6px 21px 3px rgba(0, 0, 0, 0.75);
+  @media all and (max-width: 1024px) {
+    min-width: 200px;
+    padding: 20px;
+    font-size: 1rem;
+  }
 `;
 
 const DetailPresenter = ({

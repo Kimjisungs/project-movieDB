@@ -47,3 +47,13 @@
 14. home에서는 componentDidMount가 없게 처리
 
 15. loading bar
+
+16. 팝업 vidoe
+
+    - 데이터가 없을때는 보이지 않게
+
+17. Helmet
+
+18. search enter, click
+
+19. 반응형 스타일 변경

@@ -23,6 +23,10 @@ const Title = styled.h3`
   font-size: 4rem;
   color: #fff;
   text-shadow: 2px 4px 9px rgba(0, 0, 0, 0.6);
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   @media all and (max-width: 1024px) {
     top: 30px;
     left: 30px;

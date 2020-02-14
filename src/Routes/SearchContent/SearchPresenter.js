@@ -5,6 +5,7 @@ import Section from "../../Components/Section";
 import Poster from "../../Components/Poster";
 import Loader from "../../Components/Loader";
 import Message from "../../Components/Message";
+import WrapperContent from "../../Components/WrapperContent";
 
 const SearchPresenter = ({
   loading,
@@ -21,7 +22,7 @@ const SearchPresenter = ({
       {loading ? (
         <Loader />
       ) : (
-        <>
+        <WrapperContent>
           {tvResults && tvResults.length > 0 && (
             <Section title="TV Show">
               {tvResults.map(tv => (
@@ -57,7 +58,7 @@ const SearchPresenter = ({
             tvResults.length === 0 &&
             movieResults &&
             movieResults.length === 0 && <Message text="Not Found Results" />}
-        </>
+        </WrapperContent>
       )}
     </>
   );

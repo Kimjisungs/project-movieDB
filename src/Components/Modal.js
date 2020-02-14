@@ -28,12 +28,28 @@ const Board = styled.div`
   width: 600px;
   height: 450px;
   background-color: #fcbaec;
+  @media all and (max-width: 768px) {
+    width: 80%;
+    height: auto;
+  }
 `;
 
 const VideoFrame = styled.div`
+  position: relative;
   iframe {
     width: 100%;
     height: 340px;
+  }
+  @media all and (max-width: 768px) {
+    height: 0;
+    padding-bottom: 60%;
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
 `;
 
@@ -46,6 +62,10 @@ const Title = styled.h3`
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  @media all and (max-width: 768px) {
+    padding: 20px;
+    font-size: 1.25rem;
+  }
 `;
 
 const Button = styled.button`
@@ -59,6 +79,13 @@ const Button = styled.button`
   border: 0 none;
   background-color: #090170;
   color: #fcbaec;
+  @media all and (max-width: 768px) {
+    top: -50px;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
+  }
 `;
 
 const Modal = ({ isModal, closeModal, results }) => {

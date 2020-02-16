@@ -132,7 +132,6 @@ const DetailPresenter = ({
                   <Description>
                     {results.overview || results.biography}
                   </Description>
-                  {console.log(results)}
                   {results.videos &&
                     results.videos.results &&
                     results.videos.results.length > 0 && (

@@ -8,6 +8,10 @@ React, Redux를 이용한 반응형 SPA입니다.
 
 영화, TV프로그램, 인물의 정보를 볼 수 있는 사이트이며, 검색으로도 정보를 얻을 수 있습니다.
 
+## API
+
+React, React Router, React Router Dom, Redux, React Redux, Axios, PropTypes, Styled Components, Query String, uuid, react-id-swiper, react-app-polyfill
+
 ## 구조
 
 - assets (공통 css, image)
@@ -68,89 +72,175 @@ React, Redux를 이용한 반응형 SPA입니다.
 
 ## 기능
 
-```react
+### 1. Search Bar
 
-```
+**1) Refresh**
 
-1. Components, Routes, assest, api으로 파일 분리.
+- 새로고침시 검색어를 그대로 보존하여 ux의 사용성을 높힘
+  - QueryString api를 이용하여 uri의 query를 값의 형태로 만들어 query값을 redux store에 업데이트
 
-   - Components - Globalstyle.js, header.js, router.js, tab.js, search.js
-   - Routes -> Home -> Movie,TV
-   - api.js
+![loadingBarRefresh](https://user-images.githubusercontent.com/33679192/74601558-e26f5700-50e2-11ea-8c1f-82eee1c8110a.gif)
 
-   https://youtu.be/XxfZFSJQOG8
-   [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/XxfZFSJQOG8/0.jpg)](https://www.youtube.com/watch?v=XxfZFSJQOG8)
-
-2. CSS in JS
-
-   - Props를 styled component에 전달하여 uri 파라미터 변경에 따른 style 변화 ex) tab active되여 uri가 변경될때
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/XxfZFSJQOG8" frameborder="0" allowfullscreen></iframe>
-
-3) api, data update Container, data view Presenter
-
-   - axios를 이용하여 api 컴포넌트, update 컴포넌트, update한 컴포넌트를 props로 상속시켜 view를 보여주는 Presenter페이지로 구분하여 적용
-
-4) uuid
-
-   - list를 순회 할때 id가 없을경우 ex) tab components의 list순회
-
-### 5. Loading
-
-- 데이터를 불러와서 render 되기 전까지 loading image를 사용자에게 보여주어 ux측면을 높힘
-
-![loading](https://user-images.githubusercontent.com/33679192/74599161-1a65a280-50c1-11ea-8009-501a680a1f3c.gif)
-
-#### code
-
-**Container.js**
+> Components > Search > SearchContainer.js
 
 ```react
-state = {
-  loading: true,
-};
-
-try {
+class SearchContainer extends React.Component {
+  uriQuery = () => {
     const {
-      data: { results: popularLists }
-    } = await tvApi.popular();
-    this.setState({
-      popularLists
-    });
-  } catch {
-    this.setState({
-      error: "visual Not Found"
-    });
-  } finally {
-    this.setState({
-      loading: false
-    });
-  }
+      location: { search }
+    } = this.props;
+    const { query: uriQuery } = qs.parse(search);
+    return uriQuery;
+  };
 
+  updateQueryToRedux = (() => {
+    const { getQuery } = this.props;
+
+    return {
+      search: ({ target: { value } }) => getQuery(value),
+      uri: () => {
+        const nowUriQuery = this.uriQuery();
+        getQuery(nowUriQuery);
+      },
+      empty: () => getQuery("")
+    };
+  })();
+
+  componentDidMount() {
+    this.updateQueryToRedux.uri();
+  }
 ```
 
-**Presenter.js**
+> Components > Search > SearchPresenter.js
 
 ```react
-{loading ? (
-    <Loader />
-  ) : (
-    <>
-      {popResults && popResults.length > 0 && (
-        <Section title="Popular">
-          {popResults.map(person => (
+  <Input
+    placeholder="Search Movie. ex) code, movie"
+    onChange={updateQuery}
+    value={searchQuery}
+  />
+```
+
+**2) GoBack**
+
+- browser의 뒤로가기, 앞으로가기 버튼을 누를 시 검색어를 보존하여 어떤 검색을 한 결과인지 알수있게 ux 제공
+  - didUpdate를 이용하여 현재의 uri와 과거uri가 다를때 감지하여 현재 페이지의 uri query를 업데이트함.
+  - Home으로 접근할 경우 uri query를 빈 값으로 적용
+
+![loadingBarHistoryBack](https://user-images.githubusercontent.com/33679192/74602288-6ed14800-50ea-11ea-8023-3868e76354a5.gif)
+
+> Components > Search > SearchContainer.js
+
+```react
+  uriQuery = () => {
+    const {
+      location: { search }
+    } = this.props;
+    const { query: uriQuery } = qs.parse(search);
+    return uriQuery;
+  };
+
+  updateQueryToRedux = (() => {
+    const { getQuery } = this.props;
+
+    return {
+      search: ({ target: { value } }) => getQuery(value),
+      uri: () => {
+        const nowUriQuery = this.uriQuery();
+        getQuery(nowUriQuery);
+      },
+      empty: () => getQuery("")
+    };
+  })();
+
+  matchUriAndSearchQuery = prevProps => {
+    const {
+      location: { search }
+    } = prevProps;
+    const { query: prevUriQuery } = qs.parse(search);
+    const nowUriQuery = this.uriQuery();
+
+    const {
+      location: { pathname }
+    } = this.props;
+
+    if (prevUriQuery !== nowUriQuery) {
+      pathname.includes("/home")
+        ? this.updateQueryToRedux.empty()
+        : this.updateQueryToRedux.uri();
+    }
+  };
+
+  componentDidUpdate(prevProps) {
+    this.matchUriAndSearchQuery(prevProps);
+  }
+```
+
+**3) Submit**
+
+- 검색어를 적은 후 enter 및 버튼을 클릭했을때 검색 결과를 표출
+  - onChange 이벤트 이용하여 검색어를 Redux Store에 업데이트, 업데이트 된 검색어를 value속성에 적용
+  - onSubmit, onClick 이벤트를 이용하여 값을 uri의 query에 push
+  - Router에서 감지하고 didMount하여 화면에 표출
+
+![loadingBarSubmit](https://user-images.githubusercontent.com/33679192/74600663-fe213000-50d7-11ea-96c5-63107e7400e9.gif)
+
+> Components > Search > SearchContainer.js
+
+```react
+class SearchContainer extends React.Component {
+  handleSubmit = event => {
+    event.preventDefault();
+    const { queryFromRedux: searchQuery, history } = this.props;
+    if (searchQuery !== "") history.push(`/search?query=${searchQuery}`);
+  };
+
+  updateQueryToRedux = (() => {
+    const { getQuery } = this.props;
+
+    return {
+      search: ({ target: { value } }) => getQuery(value),
+      uri: () => {
+        const nowUriQuery = this.uriQuery();
+        getQuery(nowUriQuery);
+      },
+      empty: () => getQuery("")
+    };
+  })();
+
+  render() {
+    const { queryFromRedux: searchQuery } = this.props;
+
+    return (
+      <SearchPresenter
+        handleSubmit={this.handleSubmit}
+        updateQuery={this.updateQueryToRedux.search}
+        searchQuery={searchQuery}
+      />
+    );
+  }
+```
+
+> Components > Search > SearchPresenter.js
+
+```react
+  <Form onSubmit={handleSubmit}>
+    <Input
+      placeholder="Search Movie. ex) code, movie"
+      onChange={updateQuery}
+      value={searchQuery}
+    />
+  <Button type="button" onClick={handleSubmit}>
 ```
 
 ### 6. Loading Bar
 
 - 데이터를 불러와서 render 되기까지 loading의 진행 시간을 Bar형태로 사용자에게 보여주어 ux측면을 높힘
-- 로딩 시작시 milliseconds값과 로딩이 끝난 후의 millisecnods값을 구하여 startTime, endTime의 값으로 redux store에 등록하고 그 값을 계산하여 styled components를 이용 animation 값에 적용.
+  - 로딩 시작시 milliseconds값과 로딩이 끝난 후의 millisecnods값을 구하여 startTime, endTime의 값으로 redux store에 등록하고 그 값을 계산하여 styled components를 이용 animation 값에 적용.
 
 ![LoadingBar](https://user-images.githubusercontent.com/33679192/74599663-de364000-50c8-11ea-970a-a955fa35d86d.gif)
 
-#### code
-
-**LoadingBar.js**
+**Components > LoadingBar.js**
 
 ```react
 const LoadingBarShape = styled.div`
@@ -213,7 +303,69 @@ class LoadingBar extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    startTime: state.loading.milliSecond.start,
+    endTime: state.loading.milliSecond.end
+  };
+};
 
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+      loadingStart,
+      loadingEnd
+    },
+    dispatch
+  );
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoadingBar);
+
+```
+
+### 5. Loading
+
+- 데이터를 불러와서 render 되기 전까지 loading image를 사용자에게 보여주어 ux측면을 높힘
+
+![loading](https://user-images.githubusercontent.com/33679192/74599161-1a65a280-50c1-11ea-8009-501a680a1f3c.gif)
+
+**Container.js**
+
+```react
+state = {
+  loading: true,
+};
+
+try {
+    const {
+      data: { results: popularLists }
+    } = await tvApi.popular();
+    this.setState({
+      popularLists
+    });
+  } catch {
+    this.setState({
+      error: "visual Not Found"
+    });
+  } finally {
+    this.setState({
+      loading: false
+    });
+  }
+
+```
+
+**Presenter.js**
+
+```react
+{loading ? (
+    <Loader />
+  ) : (
+    <>
+      {popResults && popResults.length > 0 && (
+        <Section title="Popular">
+          {popResults.map(person => (
 ```
 
 6. error
@@ -226,11 +378,13 @@ class LoadingBar extends React.Component {
 
    - 데이터 제한 5개 filter
 
-### 8. 이미지에 데이터가 없을경우 처리
+### 8. 이미지가 없는 경우
+
+- 이미지가 없을경우 No Poster 이미지로 대체
 
 ![imagevisiblenone](https://user-images.githubusercontent.com/33679192/74597816-d5ce0d00-50a8-11ea-9de1-b7b80626a43e.jpg)
 
-#### code
+**Components > Poster.js**
 
 ```react
    <Img>

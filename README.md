@@ -72,9 +72,7 @@ React, React Router, React Router Dom, Redux, React Redux, Axios, PropTypes, Sty
 
 ## 기능
 
-### 1. Search Bar
-
-**1) Refresh**
+### 1. Refresh
 
 - 새로고침시 검색어를 그대로 보존하여 ux의 사용성을 높힘
   - QueryString api를 이용하여 uri의 query를 값의 형태로 만들어 query값을 redux store에 업데이트
@@ -121,7 +119,7 @@ class SearchContainer extends React.Component {
   />
 ```
 
-**2) GoBack**
+### 2. GoBack
 
 - browser의 뒤로가기, 앞으로가기 버튼을 누를 시 검색어를 보존하여 어떤 검색을 한 결과인지 알수있게 ux 제공
   - didUpdate를 이용하여 현재의 uri와 과거uri가 다를때 감지하여 현재 페이지의 uri query를 업데이트함.
@@ -176,7 +174,7 @@ class SearchContainer extends React.Component {
   }
 ```
 
-**3) Submit**
+### 3. Submit
 
 - 검색어를 적은 후 enter 및 버튼을 클릭했을때 검색 결과를 표출
   - onChange 이벤트 이용하여 검색어를 Redux Store에 업데이트, 업데이트 된 검색어를 value속성에 적용
@@ -233,7 +231,7 @@ class SearchContainer extends React.Component {
   <Button type="button" onClick={handleSubmit}>
 ```
 
-### 6. Loading Bar
+### 4. Loading Bar
 
 - 데이터를 불러와서 render 되기까지 loading의 진행 시간을 Bar형태로 사용자에게 보여주어 ux측면을 높힘
   - 로딩 시작시 milliseconds값과 로딩이 끝난 후의 millisecnods값을 구하여 startTime, endTime의 값으로 redux store에 등록하고 그 값을 계산하여 styled components를 이용 animation 값에 적용.
@@ -330,7 +328,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(LoadingBar);
 
 ![loading](https://user-images.githubusercontent.com/33679192/74599161-1a65a280-50c1-11ea-8009-501a680a1f3c.gif)
 
-**Container.js**
+> Container.js
 
 ```react
 state = {
@@ -356,7 +354,7 @@ try {
 
 ```
 
-**Presenter.js**
+> Presenter.js
 
 ```react
 {loading ? (
@@ -368,23 +366,13 @@ try {
           {popResults.map(person => (
 ```
 
-6. error
-
-   - loading 후 error(페이지가 없을떄)의 경우 "Page Not Found 처리"
-
-     1. visual image가 없을경우 '이미지가 없습니다'
-
-7. visual
-
-   - 데이터 제한 5개 filter
-
-### 8. 이미지가 없는 경우
+### 6. 이미지가 없는 경우
 
 - 이미지가 없을경우 No Poster 이미지로 대체
 
 ![imagevisiblenone](https://user-images.githubusercontent.com/33679192/74597816-d5ce0d00-50a8-11ea-9de1-b7b80626a43e.jpg)
 
-**Components > Poster.js**
+> Components > Poster.js
 
 ```react
    <Img>
@@ -398,26 +386,221 @@ try {
    />
 ```
 
-9. Proptype check
+### 7. error
 
-10. uri에 query 값이 없을때 홈으로 이동
+- error일 경우 "Page Not Found 처리"
 
-11. uri에 query 값이 있는 상태에서 새로고침하면 input value에 값이 없을때 uri의 query값을 update하여 넣어주는것.
+![error](https://user-images.githubusercontent.com/33679192/74603128-9a0c6500-50f3-11ea-940c-7c86fda85217.gif)
 
-12. 뒤로가기 했을때 query값이 남아있는것.
+> Routes > SearchContent > SearchContainer.js
 
-13. 뒤로가기를 하더라도 home url 에서는 searchQuery값이 없게 처리.
+```react
+getApi = async query => {
+    try {
+      const {
+        data: { results: tvResults }
+      } = await tvApi.searchTv(query);
+      const {
+        data: { results: movieResults }
+      } = await movieApi.searchMovie(query);
 
-14. home에서는 componentDidMount가 없게 처리
 
-15. loading bar
+      throw new Error();
 
-16. 팝업 vidoe
+
+      this.setState({
+        tvResults,
+        movieResults
+      });
+    } catch {
+      this.setState({
+        error: "Page Not Found"
+      });
+    } finally {
+      this.setState({
+        loading: false
+      });
+    }
+  };
+```
+
+> Routes > SearchContent > SearchContainer.js
+
+```react
+{error && <Message text={error} />}
+```
+
+### 8. Modal Video popup
+
+- 데이터에 Video가 있으면 버튼을 생성, 없을땐 버튼을 삭제
+
+  ![modalPopup](https://user-images.githubusercontent.com/33679192/74603598-a3e49700-50f8-11ea-9845-0733c37db33f.gif)
+
+> Routes > Detail > DetailPresenter.js
+
+```react
+  <Modal
+    closeModal={closeModal}
+    isModal={isModal}
+    results={results}
+  />
+```
+
+> Components > Modal.js
+
+```react
+const Modal = ({ isModal, closeModal, results }) => {
+  return isModal ? (
+    <Wrap>
+      <Mask onClick={closeModal} />
+      <Board>
+        <VideoFrame>
+          <iframe
+            src={`https://www.youtube.com/embed/${results.videos.results[0].key}`}
+            title="title"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </VideoFrame>
+        <Title>{results.title || results.name}</Title>
+        <Button type="button" onClick={closeModal}>
+          X
+        </Button>
+      </Board>
+    </Wrap>
+  ) : null;
+};
+```
+
+### 9. Props Type
+
+- props의 type을 체크하여 다른 type의 data가 넘어올 시 console에 error를 표기하여 디버깅에 용의
+
+  ![propstype](https://user-images.githubusercontent.com/33679192/74603430-cb3a6480-50f6-11ea-9cb5-39b6a8b757f6.jpg)
+
+> Presenter.js
+
+```react
+MoviePresenter.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+  nowResults: PropTypes.array,
+  popResults: PropTypes.array,
+  topResults: PropTypes.array
+};
+```
+
+### 10. Visual
+
+- swiper 데이터 제한 5개 filter
+
+## Style
+
+### 1. Responsive
+
+- styled Componenets사용
+
+  ![responsive](https://user-images.githubusercontent.com/33679192/74604254-620b1f00-50ff-11ea-9327-79c447cd8487.gif)
+
+### 2. Hover, Click UX
+
+- Hover, Click시 컬러변경으로 사용자의 반응에 대한 경험 제공
+
+  ![hover_click](https://user-images.githubusercontent.com/33679192/74604381-c11d6380-5100-11ea-93f0-ef0e51edaf41.gif)
+
+> Componenet > Search > SearchPresenter.js
+
+```react
+const Button = styled.button`
+  outline: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70px;
+  height: 100%;
+  border: 4px solid transparent;
+  background-color: #dfdfdf;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    background-color: #a2a2a2;
+  }
+  &:active {
+    background-color: #01d277;
+  }
+  @media all and (max-width: 1024px) {
+    width: 50px;
+  }
+`;
+```
+
+- Hover, Focus시 컬러변경으로 사용자의 반응에 대한 경험 제공
+
+  ![contentHover](https://user-images.githubusercontent.com/33679192/74604474-c29b5b80-5101-11ea-89b3-c90078158fb1.gif)
+
+```react
+const Img = styled.div`
+  height: 320px;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+  transition: opacity 0.3s linear;
+  @media all and (max-width: 1024px) {
+    height: auto;
+  }
+`;
+
+const Desc = styled.p`
+  margin-top: 10px;
+  overflow: hidden;
+  white-space: normal;
+  line-height: 1.2;
+  height: 3.6em;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-weight: 300;
+  text-align: left;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  opacity: 0.6;
+`;
+
+const Links = styled(Link)`
+  &:hover,
+  &:focus {
+    ${Img} {
+      opacity: 0.4;
+    }
+    ${Desc} {
+      text-decoration: underline;
+    }
+  }
+`;
+```
+
+8. Proptype check
+
+9. uri에 query 값이 없을때 홈으로 이동
+
+10. uri에 query 값이 있는 상태에서 새로고침하면 input value에 값이 없을때 uri의 query값을 update하여 넣어주는것.
+
+11. 뒤로가기 했을때 query값이 남아있는것.
+
+12. 뒤로가기를 하더라도 home url 에서는 searchQuery값이 없게 처리.
+
+13. home에서는 componentDidMount가 없게 처리
+
+14. loading bar
+
+15. 팝업 vidoe
 
     - 데이터가 없을때는 보이지 않게
 
-17. Helmet
+16. Helmet
 
-18. search enter, click
+17. search enter, click
 
-19. 반응형 스타일 변경
+18. 반응형 스타일 변경

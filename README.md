@@ -1,4 +1,76 @@
+## Site
+
+https://moviedb-7d075.firebaseapp.com/
+
+## movie DB
+
+React, Redux를 이용한 SPA입니다.
+
+영화, TV프로그램, 인물의 정보를 볼 수 있는 사이트이며, 검색으로도 정보를 얻을 수 있습니다.
+
+## 구조
+
+- assets (공통 css, image)
+  - css
+  - images
+- Components
+  - App.js
+  - GlobalStyle.js
+  - Header.js
+  - Loadder.js (동글뱅이 로딩)
+  - LoadingBar.js (Bar형태의 로딩)
+  - Message.js (error 메시지)
+  - Modal.js (상세 페이지 팝업)
+  - Poster.js (이미지 클릭 요소)
+  - Router.js (페이지 라우터)
+  - Search (상단 검색 영역)
+    - index.js
+    - SearchContainer.js
+    - SearchPresenter.js
+  - Section.js
+  - Tab.js
+  - Visual.js (Home 메인 이미지)
+  - Wrapper.js (전체 Layout)
+  - WrapperContent.js (상세 Layout)
+- Redux
+  - Action
+    - index.js
+  - Reducer
+    - index.js
+    - Loading.js
+    - Search.js
+- Routes
+  - Home (메인 페이지)
+    - index.js
+    - HomContainer.js
+    - HomePresenter.js
+    - Router.js
+    - TV (TV tab)
+      - index.js
+      - TVContainer.js
+      - TVPresenter.js
+    - Movie (Movie tab)
+      - index.js
+      - MovieContainer.js
+      - MoviePresenter.js
+    - People (People tab)
+      - index.js
+      - PeopleContainer.js
+      - PeoplePresenter.js
+  - Detail (상세 페이지)
+    - index.js
+    - DetailContainer.js
+    - DetailPresenter.js
+  - SearchContent (검색 후 나오는 페이지)
+    - index.js
+    - SearchContainer.js
+    - SearchPresenter.js
+
 ## 기능
+
+```react
+
+```
 
 1. Components, Routes, assest, api으로 파일 분리.
 
@@ -6,33 +78,51 @@
    - Routes -> Home -> Movie,TV
    - api.js
 
+   https://youtu.be/XxfZFSJQOG8
+   [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/XxfZFSJQOG8/0.jpg)](https://www.youtube.com/watch?v=XxfZFSJQOG8)
+
 2. CSS in JS
 
    - Props를 styled component에 전달하여 uri 파라미터 변경에 따른 style 변화 ex) tab active되여 uri가 변경될때
 
-3. api, data update Container, data view Presenter
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/XxfZFSJQOG8" frameborder="0" allowfullscreen></iframe>
+
+3) api, data update Container, data view Presenter
 
    - axios를 이용하여 api 컴포넌트, update 컴포넌트, update한 컴포넌트를 props로 상속시켜 view를 보여주는 Presenter페이지로 구분하여 적용
 
-4. uuid
+4) uuid
 
    - list를 순회 할때 id가 없을경우 ex) tab components의 list순회
 
-5. loading
+5) loading
 
    - 데이터가 불러오기 전 loading처리
 
-6. error
+6) error
 
    - loading 후 error(페이지가 없을떄)의 경우 "Page Not Found 처리"
 
      1. visual image가 없을경우 '이미지가 없습니다'
 
-7. visual
+7) visual
 
    - 데이터 제한 5개 filter
 
-8. poster에 이미지가 있을때와 없을떄
+8) poster에 이미지가 있을때와 없을떄
+   ![imagevisiblenone](https://user-images.githubusercontent.com/33679192/74597816-d5ce0d00-50a8-11ea-9de1-b7b80626a43e.jpg)
+
+```react
+   <Img>
+     <img
+       src={
+         image
+           ? `https://image.tmdb.org/t/p/w500${image}`
+           : require("../assets/images/no_poster.jpg")
+       }
+      alt={title}
+   />
+```
 
 9. Proptype check
 

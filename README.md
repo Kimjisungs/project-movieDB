@@ -4,7 +4,7 @@ https://moviedb-7d075.firebaseapp.com/
 
 ## movie DB
 
-React, Redux를 이용한 SPA입니다.
+React, Redux를 이용한 반응형 SPA입니다.
 
 영화, TV프로그램, 인물의 정보를 볼 수 있는 사이트이며, 검색으로도 정보를 얻을 수 있습니다.
 
@@ -95,22 +95,142 @@ React, Redux를 이용한 SPA입니다.
 
    - list를 순회 할때 id가 없을경우 ex) tab components의 list순회
 
-5) loading
+### 5. Loading
 
-   - 데이터가 불러오기 전 loading처리
+- 데이터를 불러와서 render 되기 전까지 loading image를 사용자에게 보여주어 ux측면을 높힘
 
-6) error
+![loading](https://user-images.githubusercontent.com/33679192/74599161-1a65a280-50c1-11ea-8009-501a680a1f3c.gif)
+
+#### code
+
+**Container.js**
+
+```react
+state = {
+  loading: true,
+};
+
+try {
+    const {
+      data: { results: popularLists }
+    } = await tvApi.popular();
+    this.setState({
+      popularLists
+    });
+  } catch {
+    this.setState({
+      error: "visual Not Found"
+    });
+  } finally {
+    this.setState({
+      loading: false
+    });
+  }
+
+```
+
+**Presenter.js**
+
+```react
+{loading ? (
+    <Loader />
+  ) : (
+    <>
+      {popResults && popResults.length > 0 && (
+        <Section title="Popular">
+          {popResults.map(person => (
+```
+
+### 6. Loading Bar
+
+- 데이터를 불러와서 render 되기까지 loading의 진행 시간을 Bar형태로 사용자에게 보여주어 ux측면을 높힘
+- 로딩 시작시 milliseconds값과 로딩이 끝난 후의 millisecnods값을 구하여 startTime, endTime의 값으로 redux store에 등록하고 그 값을 계산하여 styled components를 이용 animation 값에 적용.
+
+![LoadingBar](https://user-images.githubusercontent.com/33679192/74599663-de364000-50c8-11ea-970a-a955fa35d86d.gif)
+
+#### code
+
+**LoadingBar.js**
+
+```react
+const LoadingBarShape = styled.div`
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background-color: #eee;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: ${AniWidthBar} ${props => `${props.barAni * 0.001}`}s ease-in-out;
+    height: 100%;
+    background-color: red;
+    transition: all 0.2s;
+  }
+`;
+
+class LoadingBar extends React.Component {
+  barAni = () => {
+    const date = new Date();
+    const milliSeconds = date.getMilliseconds();
+    const {
+      loading,
+      startTime,
+      endTime,
+      loadingStart,
+      loadingEnd
+    } = this.props;
+    let totalSeconds = 0;
+
+    if (loading && !startTime) loadingStart(milliSeconds);
+    if (!loading && !endTime) loadingEnd(milliSeconds);
+
+    let _startTime = 0;
+    let _endTime = 0;
+
+    if (!loading && startTime && endTime) {
+      _startTime = startTime > 500 ? 1000 - startTime : startTime;
+      _endTime = endTime > 500 ? 1000 - endTime : endTime;
+      totalSeconds = Math.abs(_startTime + _endTime);
+      totalSeconds =
+        totalSeconds < 100 ? `0${totalSeconds}` : `${totalSeconds}`;
+      return totalSeconds;
+    }
+  };
+
+  componentWillUnmount() {
+    const { loadingStart, loadingEnd } = this.props;
+    loadingStart(0);
+    loadingEnd(0);
+  }
+
+  render() {
+    return <LoadingBarShape barAni={this.barAni()} />;
+  }
+}
+
+
+```
+
+6. error
 
    - loading 후 error(페이지가 없을떄)의 경우 "Page Not Found 처리"
 
      1. visual image가 없을경우 '이미지가 없습니다'
 
-7) visual
+7. visual
 
    - 데이터 제한 5개 filter
 
-8) poster에 이미지가 있을때와 없을떄
-   ![imagevisiblenone](https://user-images.githubusercontent.com/33679192/74597816-d5ce0d00-50a8-11ea-9de1-b7b80626a43e.jpg)
+### 8. 이미지에 데이터가 없을경우 처리
+
+![imagevisiblenone](https://user-images.githubusercontent.com/33679192/74597816-d5ce0d00-50a8-11ea-9de1-b7b80626a43e.jpg)
+
+#### code
 
 ```react
    <Img>

@@ -75,7 +75,7 @@ React, React Router, React Router Dom, Redux, React Redux, Axios, PropTypes, Sty
 ### 1. Refresh
 
 - 새로고침시 검색어를 그대로 보존하여 ux의 사용성을 높힘
-  - QueryString api를 이용하여 uri의 query를 값의 형태로 만들어 query값을 redux store에 업데이트
+  - query-string 이용하여 uri의 query를 값의 형태로 만들어 query값을 redux store에 업데이트
 
 ![loadingBarRefresh](https://user-images.githubusercontent.com/33679192/74601558-e26f5700-50e2-11ea-8c1f-82eee1c8110a.gif)
 
@@ -123,7 +123,7 @@ class SearchContainer extends React.Component {
 
 - browser의 뒤로가기, 앞으로가기 버튼을 누를 시 검색어를 보존하여 어떤 검색을 한 결과인지 알수있게 ux 제공
   - didUpdate를 이용하여 현재의 uri와 과거uri가 다를때 감지하여 현재 페이지의 uri query를 업데이트함.
-  - Home으로 접근할 경우 uri query를 빈 값으로 적용
+  - Home으로 접근할 경우 검색어를 빈값으로 적용
 
 ![loadingBarHistoryBack](https://user-images.githubusercontent.com/33679192/74602288-6ed14800-50ea-11ea-8023-3868e76354a5.gif)
 
@@ -490,9 +490,28 @@ MoviePresenter.propTypes = {
 };
 ```
 
-### 10. Visual
+### 10. Helmet
 
-- swiper 데이터 제한 5개 filter
+- page 마다 타이틀 변경
+
+  ![title](https://user-images.githubusercontent.com/33679192/74648212-92ff5880-51c0-11ea-9224-e6a21d095475.gif)
+
+```react
+import Helmet from "react-helmet";
+
+<Helmet>
+  <title>
+    {(results && results.name && results.name) || ""} - Movie DB
+  </title>
+</Helmet>
+```
+
+### 11. Visual
+
+- react-id-swiper api 사용
+- 데이터 제한 5개 filter
+
+  ![visual](https://user-images.githubusercontent.com/33679192/74646866-f76ce880-51bd-11ea-9645-99f43217d103.gif)
 
 ## Style
 
@@ -580,27 +599,3 @@ const Links = styled(Link)`
   }
 `;
 ```
-
-8. Proptype check
-
-9. uri에 query 값이 없을때 홈으로 이동
-
-10. uri에 query 값이 있는 상태에서 새로고침하면 input value에 값이 없을때 uri의 query값을 update하여 넣어주는것.
-
-11. 뒤로가기 했을때 query값이 남아있는것.
-
-12. 뒤로가기를 하더라도 home url 에서는 searchQuery값이 없게 처리.
-
-13. home에서는 componentDidMount가 없게 처리
-
-14. loading bar
-
-15. 팝업 vidoe
-
-    - 데이터가 없을때는 보이지 않게
-
-16. Helmet
-
-17. search enter, click
-
-18. 반응형 스타일 변경
